@@ -19,7 +19,6 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-grey);
             color: var(--dark-grey);
-            /* Membuat konten rata tengah secara vertikal dan horizontal */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -56,16 +55,19 @@
         }
 
         input[type="text"],
-        input[type="file"] {
+        input[type="file"],
+        select { /* Menambahkan style untuk select */
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             box-sizing: border-box;
             transition: border-color 0.3s;
+            background-color: white; /* Pastikan background select putih */
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus,
+        select:focus { /* Menambahkan style focus untuk select */
             outline: none;
             border-color: var(--primary-color);
         }
@@ -98,7 +100,7 @@
             font-weight: 600;
             padding: 15px;
             border-radius: 8px;
-            display: none; /* Disembunyikan secara default */
+            display: none;
         }
         .status-sukses { background-color: #d4edda; color: #155724; }
         .status-gagal { background-color: #f8d7da; color: #721c24; }
@@ -114,6 +116,20 @@
                 <label for="namaSiswa">Nama Lengkap Siswa</label>
                 <input type="text" id="namaSiswa" name="namaSiswa" required>
             </div>
+            
+            <div class="input-group">
+                <label for="kelas">Pilih Kelas</label>
+                <select id="kelas" name="kelas" required>
+                    <option value="" disabled selected>-- Pilih Kelas Anda --</option>
+                    <option value="10-1">10-1</option>
+                    <option value="10-2">10-2</option>
+                    <option value="10-3">10-3</option>
+                    <option value="10-4">10-4</option>
+                    <option value="10-5">10-5</option>
+                    <option value="10-6">10-6</option>
+                    <option value="10-7">10-7</option>
+                </select>
+            </div>
             <div class="input-group">
                 <label for="fileTugas">Pilih File Tugas</label>
                 <input type="file" id="fileTugas" name="fileTugas" required>
@@ -128,8 +144,7 @@
         const statusDiv = document.getElementById('status');
         const submitBtn = document.getElementById('submitBtn');
         
-        // GANTI DENGAN URL APLIKASI WEB ANDA YANG SUDAH DI-DEPLOY
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz32SPxZcFuM5sr85OQ98L1lc1f4M5mlZHpavxQH8N_d1COdLRpyHPjRah-hWkAy0RucQ/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz32SPxZcFuM5sr85OQ98L1lc1f4M5mlZHpavxQH8N_d1COdLRpyHPjRah-hWkAy0RucQ/exec'; // <-- PASTIKAN URL INI BENAR
 
         form.addEventListener('submit', e => {
             e.preventDefault();
@@ -146,9 +161,10 @@
             reader.onloadend = function(e) {
                 const data = {
                     namaSiswa: document.getElementById('namaSiswa').value,
+                    kelas: document.getElementById('kelas').value, // <-- BARIS BARU DITAMBAHKAN
                     fileName: file.name,
                     mimeType: file.type,
-                    file: e.target.result // Ini adalah data file dalam format base64
+                    file: e.target.result
                 };
 
                 fetch(scriptURL, {
