@@ -1,39 +1,183 @@
-<h2>Formulir Pengumpulan Tugas (Versi Canggih)</h2>
-<form id="myForm">
-    <label for="nama">Nama Siswa:</label><br>
-    <input type="text" id="nama" name="namaSiswa" required><br><br>
-    
-    <label for="file">Pilih File:</label><br>
-    <input type="file" id="file" name="fileTugas" required><br><br>
-    
-    <input type="submit" value="Kumpulkan">
-</form>
-<div id="status"></div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pengumpulan Tugas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-<script>
-    const form = document.getElementById('myForm');
-    const statusDiv = document.getElementById('status');
+        :root {
+            --primary-color: #007BFF;
+            --light-grey: #f4f7f6;
+            --dark-grey: #555;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
 
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-        statusDiv.innerHTML = "Mengunggah, harap tunggu...";
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            /* Membuat konten rata tengah secara vertikal dan horizontal */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-        // URL dari Google Apps Script Anda
-        const url = "https://script.google.com/macros/s/AKfycbz32SPxZcFuM5sr85OQ98L1lc1f4M5mlZHpavxQH8N_d1COdLRpyHPjRah-hWkAy0RucQ/exec";
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
         
-        const formData = new FormData(form);
+        .submit-btn:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 8px;
+            display: none; /* Disembunyikan secara default */
+        }
+        .status-sukses { background-color: #d4edda; color: #155724; }
+        .status-gagal { background-color: #f8d7da; color: #721c24; }
+        .status-proses { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Pengumpulan Tugas Siswa</h2>
+        <form id="uploadForm">
+            <div class="input-group">
+                <label for="namaSiswa">Nama Lengkap Siswa</label>
+                <input type="text" id="namaSiswa" name="namaSiswa" required>
+            </div>
+            <div class="input-group">
+                <label for="fileTugas">Pilih File Tugas</label>
+                <input type="file" id="fileTugas" name="fileTugas" required>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Kumpulkan Tugas</button>
+        </form>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const statusDiv = document.getElementById('status');
+        const submitBtn = document.getElementById('submitBtn');
         
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => res.text())
-        .then(data => {
-            statusDiv.innerHTML = data; // Menampilkan pesan sukses/gagal dari skrip
-            form.reset();
-        })
-        .catch(err => {
-            statusDiv.innerHTML = "Terjadi error: " + err;
+        // GANTI DENGAN URL APLIKASI WEB ANDA YANG SUDAH DI-DEPLOY
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz32SPxZcFuM5sr85OQ98L1lc1f4M5mlZHpavxQH8N_d1COdLRpyHPjRah-hWkAy0RucQ/exec';
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Mengunggah...';
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-proses';
+            statusDiv.textContent = 'Harap tunggu, file sedang diproses...';
+
+            const file = document.getElementById('fileTugas').files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function(e) {
+                const data = {
+                    namaSiswa: document.getElementById('namaSiswa').value,
+                    fileName: file.name,
+                    mimeType: file.type,
+                    file: e.target.result // Ini adalah data file dalam format base64
+                };
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(response => {
+                    statusDiv.textContent = response.message;
+                    if (response.status === 'sukses') {
+                        statusDiv.className = 'status-sukses';
+                        form.reset();
+                    } else {
+                        statusDiv.className = 'status-gagal';
+                    }
+                })
+                .catch(error => {
+                    statusDiv.className = 'status-gagal';
+                    statusDiv.textContent = 'Error! ' + error.message;
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Kumpulkan Tugas';
+                });
+            };
+            
+            reader.readAsDataURL(file);
         });
-    });
-</script>
+    </script>
+</body>
+</html>
