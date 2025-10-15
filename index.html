@@ -1,0 +1,39 @@
+<h2>Formulir Pengumpulan Tugas (Versi Canggih)</h2>
+<form id="myForm">
+    <label for="nama">Nama Siswa:</label><br>
+    <input type="text" id="nama" name="namaSiswa" required><br><br>
+    
+    <label for="file">Pilih File:</label><br>
+    <input type="file" id="file" name="fileTugas" required><br><br>
+    
+    <input type="submit" value="Kumpulkan">
+</form>
+<div id="status"></div>
+
+<script>
+    const form = document.getElementById('myForm');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        statusDiv.innerHTML = "Mengunggah, harap tunggu...";
+
+        // URL dari Google Apps Script Anda
+        const url = "https://script.google.com/macros/s/AKfycbz32SPxZcFuM5sr85OQ98L1lc1f4M5mlZHpavxQH8N_d1COdLRpyHPjRah-hWkAy0RucQ/exec";
+        
+        const formData = new FormData(form);
+        
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+            statusDiv.innerHTML = data; // Menampilkan pesan sukses/gagal dari skrip
+            form.reset();
+        })
+        .catch(err => {
+            statusDiv.innerHTML = "Terjadi error: " + err;
+        });
+    });
+</script>
