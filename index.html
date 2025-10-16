@@ -12,6 +12,7 @@
     <style>
         :root {
             --primary-color: #007BFF;
+            --secondary-color: #28a745; /* Warna hijau untuk tombol kedua */
             --background-color: #f4f7f6;
             --card-background: #ffffff;
             --text-dark: #2c3e50;
@@ -22,7 +23,6 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--background-color);
             color: var(--text-dark);
-            /* Layout untuk menengahkan konten secara sempurna */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,7 +54,7 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            flex-wrap: wrap; /* Agar responsif di layar kecil */
+            flex-wrap: wrap;
         }
 
         .card {
@@ -90,7 +90,7 @@
             color: var(--text-light);
             font-size: 14px;
             line-height: 1.6;
-            flex-grow: 1; /* Mendorong tombol ke bawah agar sejajar */
+            flex-grow: 1;
             margin-bottom: 30px;
         }
 
@@ -98,30 +98,31 @@
             display: inline-block;
             width: 100%;
             padding: 15px;
-            background-color: var(--primary-color);
             color: white;
             text-decoration: none;
             font-weight: 600;
             border-radius: 10px;
             transition: background-color 0.3s;
         }
-
-        .btn:hover {
+        
+        /* === PERUBAHAN DI SINI === */
+        .btn-repo {
+            background-color: var(--primary-color);
+        }
+        .btn-repo:hover {
             background-color: #0056b3;
         }
+        .btn-upload {
+            background-color: var(--secondary-color);
+        }
+        .btn-upload:hover {
+            background-color: #1e7e34;
+        }
         
-        /* Aturan responsive untuk mobile */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px;
-            }
-            header p {
-                font-size: 16px;
-            }
-            .card-grid {
-                flex-direction: column;
-                align-items: center;
-            }
+            header h1 { font-size: 28px; }
+            header p { font-size: 16px; }
+            .card-grid { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -140,14 +141,14 @@
                     <div class="card-icon">📂</div>
                     <h2>Materi & Repositori</h2>
                     <p>Temukan modul, presentasi, video tutorial, dan file pendukung lainnya di sini.</p>
-                    <a href="repository.html" class="btn">Buka Repositori</a>
+                    <a href="repository.html" class="btn btn-repo">Buka Repositori</a>
                 </div>
 
                 <div class="card">
                     <div class="card-icon">📤</div>
                     <h2>Pengumpulan Tugas</h2>
                     <p>Unggah file tugas Anda melalui formulir yang telah disediakan.</p>
-                    <a href="https://usudo218.github.io/upload/upload">Unggah Tugas</a>
+                    <a href="upload.html" class="btn btn-upload">Unggah Tugas</a>
                 </div>
 
             </div>
