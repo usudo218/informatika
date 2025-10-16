@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa - Informatika SMAN 1 Muncar</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
+        .header { background-color: #007bff; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        h1 { margin: 0; font-size: 1.5em; }
+        .student-info { background-color: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .student-info p { margin: 5px 0; }
+        .content-section { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        h2 { margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .nav-button { display: block; padding: 15px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; color: white; transition: transform 0.2s, box-shadow 0.2s; }
+        .presence-button { background-color: #17a2b8; }
+        .grade-button { background-color: #ffc107; color: #333; }
+        .task-button { background-color: #28a745; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .logout-button { background-color: #dc3545; color: white; padding: 8px 16px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; cursor: pointer; border: none; font-size: 0.9em; }
+        .logout-button:hover { background-color: #c82333; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard Siswa</h1>
+        <button class="logout-button" id="logoutBtn">Logout</button>
+    </div>
+
+    <div class="student-info">
+        <p><strong>Nama:</strong> <span id="studentName"></span></p>
+        <p><strong>Kelas:</strong> <span id="studentClass"></span></p>
+        <p><strong>No. Absen:</strong> <span id="studentAbsen"></span></p>
+    </div>
+
+    <div class="content-section">
+        <h2>📊 Rekap Presensi</h2>
+        <p>Lihat rekapitulasi kehadiran Anda selama satu semester.</p>
+        <a href="rekap_presensi.html" class="nav-button presence-button">Lihat Rekap Presensi</a>
+    </div>
+
+    <div class="content-section">
+        <h2>🏆 Rekap Nilai Siswa</h2>
+        <p>Lihat rekapitulasi nilai Anda yang telah diinput oleh guru.</p>
+        <a href="rekap_nilai.html" class="nav-button grade-button">Lihat Rekap Nilai</a>
+    </div>
+
+    <div class="content-section">
+        <h2>📝 Tugas / Ulangan Harian</h2>
+        <p>Kerjakan tugas atau ulangan yang tersedia di sini.</p>
+        <a href="tugas.html" class="nav-button task-button">Mulai Kerjakan Tugas</a>
+    </div>
+
+    <script>
+        // Fungsi Logout
+        function logout() {
+            sessionStorage.clear(); // Hapus semua data sesi
+            window.location.href = 'index.html'; // Kembali ke halaman login
+        }
+        
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+
+        window.onload = function() {
+            const name = sessionStorage.getItem('loggedInStudentName');
+            const studentClass = sessionStorage.getItem('loggedInStudentClass');
+            const absen = sessionStorage.getItem('loggedInStudentAbsen');
+
+            if (!name) {
+                alert('Anda harus login terlebih dahulu!');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            document.getElementById('studentName').textContent = name;
+            document.getElementById('studentClass').textContent = studentClass;
+            document.getElementById('studentAbsen').textContent = absen;
+        };
+    </script>
+</body>
+</html>
