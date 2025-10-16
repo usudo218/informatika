@@ -3,230 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFORMATIKA</title>
+    <title>REPOSITORY INFORMATIKA</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS untuk Tampilan 3 Kolom Responsif */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa; /* Warna latar sedikit lebih cerah */
+            background-color: #f8f9fa;
             color: #333;
             margin: 0;
             padding: 25px;
         }
-        .container {
-            max-width: 1200px; /* Lebarkan kontainer untuk 3 kolom */
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        header h1 {
-            color: #2c3e50;
-            font-size: 32px;
-            font-weight: 700;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 20px; } /* Kurangi margin bottom */
+        header h1 { color: #2c3e50; font-size: 32px; font-weight: 700; }
         
-        /* Tata Letak Grid Utama */
-        .file-grid {
-            display: grid;
-            /* Default: 3 kolom dengan lebar yang sama */
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px; /* Jarak antar kartu */
-        }
-        
-        /* Styling untuk setiap Kartu File */
-        .file-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #e9ecef;
-        }
-        .file-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .file-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .file-icon {
-            font-size: 18px;
-            margin-right: 15px;
-        }
-        .file-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        .file-description {
-            margin: 0 0 20px 0;
-            color: #6c757d;
-            font-size: 10px;
-            line-height: 1.6;
-            flex-grow: 1; /* Mendorong tombol ke bawah agar sejajar */
-        }
-        .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Tombol dibagi rata */
-            gap: 10px;
-        }
-        /* Jika hanya ada satu tombol, buat memenuhi lebar */
-        .button-group.single {
-            grid-template-columns: 1fr;
-        }
-        .btn {
+        /* === TOMBOL KEMBALI BARU === */
+        .back-link {
             display: inline-block;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
+            margin-bottom: 40px; /* Jarak ke konten di bawahnya */
+            font-size: 14px;
             font-weight: 500;
-            font-size: 12px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.2s;
+            color: #007bff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s, color 0.2s;
         }
-        .btn-download {
-            background-color: #007bff; /* Biru Primer */
-            color: white;
-        }
-        .btn-download:hover {
-            background-color: #0056b3;
-        }
-        .btn-view {
-            background-color: #f1f3f5;
-            color: #343a40;
-        }
-        .btn-view:hover {
+        .back-link:hover {
             background-color: #e9ecef;
+            color: #0056b3;
         }
 
-        /* === ATURAN RESPONSIVE === */
-        /* Untuk Tablet - ubah menjadi 2 kolom */
-        @media (max-width: 992px) {
-            .file-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        .file-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .file-card { background-color: #ffffff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.07); padding: 20px; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e9ecef; }
+        .file-card:hover { transform: translateY(-7px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .file-header { display: flex; align-items: center; margin-bottom: 15px; }
+        .file-icon { font-size: 18px; margin-right: 15px; }
+        .file-title { font-size: 14px; font-weight: 600; color: #2c3e50; }
+        .file-description { margin: 0 0 20px 0; color: #6c757d; font-size: 10px; line-height: 1.6; flex-grow: 1; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .button-group.single { grid-template-columns: 1fr; }
+        .btn { display: inline-block; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 12px; text-align: center; border: 2px solid transparent; transition: all 0.2s; }
+        .btn-download { background-color: #007bff; color: white; }
+        .btn-download:hover { background-color: #0056b3; }
+        .btn-view { background-color: #f1f3f5; color: #343a40; }
+        .btn-view:hover { background-color: #e9ecef; }
 
-        /* Untuk HP - ubah menjadi 1 kolom */
+        @media (max-width: 992px) { .file-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
-            .file-grid {
-                grid-template-columns: 1fr;
-            }
-            body {
-                padding: 15px;
-            }
-            header h1 {
-                font-size: 2Opx;
-            }
+            .file-grid { grid-template-columns: 1fr; }
+            body { padding: 15px; }
+            header h1 { font-size: 20px; }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header>
-            <h1>REPOSITORY</br>INFORMATIKA</h1>
+            <h1>REPOSITORY<br>INFORMATIKA</h1>
         </header>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back-link">⬅ Kembali ke Dashboard</a>
+        </div>
 
         <main id="file-grid-container" class="file-grid"></main>
-
     </div>
 
     <script>
-        // ==========================================================
-        // === ANDA HANYA PERLU MENGEDIT BAGIAN DI BAWAH INI ===
-        // ==========================================================
-        
+        // Data file Anda (tidak diubah)
         const daftarFile = [
-            {
-                ikon: "📄",
-                judul: "Modul 1: Pengenalan Jaringan",
-                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
-                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
-                tipe: "pdf" 
-            },
-            {
-                ikon: "📦",
-                judul: "Aplikasi Latihan Subnetting",
-                deskripsi: "Kumpulan aplikasi ringan untuk membantu siswa berlatih perhitungan subnetting.",
-                id: "GANTI_DENGAN_ID_FILE_ZIP_ANDA",
-                tipe: "zip"
-            },
-            {
-                ikon: "🖼️",
-                judul: "Infografis Model OSI",
-                deskripsi: "Diagram visual yang menjelaskan 7 lapisan model OSI dengan mudah.",
-                id: "GANTI_DENGAN_ID_FILE_GAMBAR_ANDA",
-                tipe: "gambar"
-            },
-            {
-                ikon: "📝",
-                judul: "Template Laporan Praktikum",
-                deskripsi: "Format laporan resmi yang harus digunakan untuk tugas praktikum.",
-                id: "GANTI_DENGAN_ID_FILE_DOCX_ANDA",
-                tipe: "dokumen"
-            },
-            {
-                ikon: "📊",
-                judul: "Presentasi Kelas Jaringan",
-                deskripsi: "Slide presentasi untuk materi pertemuan ke-3 mengenai IP Address.",
-                id: "GANTI_DENGAN_ID_FILE_PPT_ANDA",
-                tipe: "ppt"
-            },
-            {
-                ikon: "📹",
-                judul: "Video Tutorial VLAN",
-                deskripsi: "Video panduan konfigurasi VLAN dasar di Cisco Packet Tracer.",
-                id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
-                tipe: "video"
-            }
-            // TAMBAHKAN FILE BARU DI SINI
+            { ikon: "📄", judul: "Modul 1: Pengenalan Jaringan", deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.", id: "GANTI_DENGAN_ID_FILE_PDF_ANDA", tipe: "pdf" },
+            { ikon: "📦", judul: "Aplikasi Latihan Subnetting", deskripsi: "Kumpulan aplikasi ringan untuk membantu siswa berlatih perhitungan subnetting.", id: "GANTI_DENGAN_ID_FILE_ZIP_ANDA", tipe: "zip" },
+            { ikon: "🖼️", judul: "Infografis Model OSI", deskripsi: "Diagram visual yang menjelaskan 7 lapisan model OSI dengan mudah.", id: "GANTI_DENGAN_ID_FILE_GAMBAR_ANDA", tipe: "gambar" },
+            { ikon: "📝", judul: "Template Laporan Praktikum", deskripsi: "Format laporan resmi yang harus digunakan untuk tugas praktikum.", id: "GANTI_DENGAN_ID_FILE_DOCX_ANDA", tipe: "dokumen" },
+            { ikon: "📊", judul: "Presentasi Kelas Jaringan", deskripsi: "Slide presentasi untuk materi pertemuan ke-3 mengenai IP Address.", id: "GANTI_DENGAN_ID_FILE_PPT_ANDA", tipe: "ppt" },
+            { ikon: "📹", judul: "Video Tutorial VLAN", deskripsi: "Video panduan konfigurasi VLAN dasar di Cisco Packet Tracer.", id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA", tipe: "video" }
         ];
 
-        // ==========================================================
-        // === JANGAN UBAH KODE DI BAWAH INI ===
-        // ==========================================================
-
+        // Kode JavaScript untuk generate kartu (tidak diubah)
         const fileContainer = document.getElementById('file-grid-container');
-
         daftarFile.forEach(file => {
             const card = document.createElement('div');
             card.className = 'file-card';
-
             const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
             const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
-
             let buttonsHTML = '';
             let buttonGroupClass = 'button-group';
-
             if (file.tipe !== 'zip') {
                 buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
             } else {
-                buttonGroupClass += ' single'; // Tambah class 'single' jika hanya ada 1 tombol
+                buttonGroupClass += ' single';
             }
             buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
-
             card.innerHTML = `
                 <div class="file-header">
                     <div class="file-icon">${file.ikon}</div>
                     <div class="file-title">${file.judul}</div>
                 </div>
                 <p class="file-description">${file.deskripsi}</p>
-                <div class="${buttonGroupClass}">
-                    ${buttonsHTML}
-                </div>
+                <div class="${buttonGroupClass}">${buttonsHTML}</div>
             `;
             fileContainer.appendChild(card);
         });
