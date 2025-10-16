@@ -6,15 +6,11 @@
     <title>Form Pengumpulan Tugas</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
         :root {
-            --primary-color: #007BFF;
+            --primary-color: #28a745; /* Diubah jadi hijau agar sesuai dashboard */
             --light-grey: #f4f7f6;
             --dark-grey: #555;
-            --success-color: #28a745;
-            --error-color: #dc3545;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--light-grey);
@@ -27,150 +23,105 @@
             padding: 20px;
             box-sizing: border-box;
         }
-
+        .main-container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        /* === TOMBOL KEMBALI BARU === */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px; /* Jarak ke form di bawahnya */
+            font-size: 14px;
+            font-weight: 500;
+            color: #007bff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .back-link:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
         .form-container {
             background-color: #ffffff;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
         }
-
-        h2 {
-            margin-bottom: 30px;
-            color: #333;
+        h2 { margin-bottom: 30px; color: #333; }
+        .input-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; }
+        input[type="text"], input[type="file"], select {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; transition: border-color 0.3s; background-color: white;
         }
-
-        .input-group {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        input[type="file"],
-        select { /* Menambahkan style untuk select */
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-            background-color: white; /* Pastikan background select putih */
-        }
-
-        input[type="text"]:focus,
-        select:focus { /* Menambahkan style focus untuk select */
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
+        input[type="text"]:focus, select:focus { outline: none; border-color: var(--primary-color); }
         .submit-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--primary-color);
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            width: 100%; padding: 15px; border: none; border-radius: 8px; background-color: var(--primary-color); color: white; font-size: 16px; font-weight: 600; cursor: pointer; transition: background-color 0.3s, transform 0.2s;
         }
-
-        .submit-btn:hover:not(:disabled) {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        .submit-btn:disabled {
-            background-color: #a0a0a0;
-            cursor: not-allowed;
-        }
-
-        #status {
-            margin-top: 20px;
-            font-weight: 600;
-            padding: 15px;
-            border-radius: 8px;
-            display: none;
-        }
+        .submit-btn:hover:not(:disabled) { background-color: #1e7e34; transform: translateY(-2px); }
+        .submit-btn:disabled { background-color: #a0a0a0; cursor: not-allowed; }
+        #status { margin-top: 20px; font-weight: 600; padding: 15px; border-radius: 8px; display: none; }
         .status-sukses { background-color: #d4edda; color: #155724; }
         .status-gagal { background-color: #f8d7da; color: #721c24; }
         .status-proses { background-color: #d1ecf1; color: #0c5460; }
     </style>
 </head>
 <body>
-
-    <div class="form-container">
-        <h2>Pengumpulan Tugas Siswa</h2>
-        <form id="uploadForm">
-            <div class="input-group">
-                <label for="namaSiswa">Nama Lengkap Siswa</label>
-                <input type="text" id="namaSiswa" name="namaSiswa" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="kelas">Pilih Kelas</label>
-                <select id="kelas" name="kelas" required>
-                    <option value="" disabled selected>-- Pilih Kelas Anda --</option>
-                    <option value="10-1">10-1</option>
-                    <option value="10-2">10-2</option>
-                    <option value="10-3">10-3</option>
-                    <option value="10-4">10-4</option>
-                    <option value="10-5">10-5</option>
-                    <option value="10-6">10-6</option>
-                    <option value="10-7">10-7</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="fileTugas">Pilih File Tugas</label>
-                <input type="file" id="fileTugas" name="fileTugas" required>
-            </div>
-            <button type="submit" class="submit-btn" id="submitBtn">Kumpulkan Tugas</button>
-        </form>
-        <div id="status"></div>
+    <div class="main-container">
+        <a href="index.html" class="back-link">⬅ Kembali ke Dashboard</a>
+        
+        <div class="form-container">
+            <h2>Pengumpulan Tugas Siswa</h2>
+            <form id="uploadForm">
+                <div class="input-group">
+                    <label for="namaSiswa">Nama Lengkap Siswa</label>
+                    <input type="text" id="namaSiswa" name="namaSiswa" required>
+                </div>
+                <div class="input-group">
+                    <label for="kelas">Pilih Kelas</label>
+                    <select id="kelas" name="kelas" required>
+                        <option value="" disabled selected>-- Pilih Kelas Anda --</option>
+                        <option value="10-1">10-1</option> <option value="10-2">10-2</option>
+                        <option value="10-3">10-3</option> <option value="10-4">10-4</option>
+                        <option value="10-5">10-5</option> <option value="10-6">10-6</option>
+                        <option value="10-7">10-7</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="fileTugas">Pilih File Tugas</label>
+                    <input type="file" id="fileTugas" name="fileTugas" required>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Kumpulkan Tugas</button>
+            </form>
+            <div id="status"></div>
+        </div>
     </div>
-
     <script>
         const form = document.getElementById('uploadForm');
         const statusDiv = document.getElementById('status');
         const submitBtn = document.getElementById('submitBtn');
-        
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzEKr1E0EUIfwoJ3iV1WofdkeTxvPtmrSA_7wgWxf7rn-NFSwPveGmwAvNXbdSQKyRAwQ/exec'; // <-- PASTIKAN URL INI BENAR
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-
             submitBtn.disabled = true;
             submitBtn.textContent = 'Mengunggah...';
             statusDiv.style.display = 'block';
             statusDiv.className = 'status-proses';
             statusDiv.textContent = 'Harap tunggu, file sedang diproses...';
-
             const file = document.getElementById('fileTugas').files[0];
             const reader = new FileReader();
-
             reader.onloadend = function(e) {
                 const data = {
                     namaSiswa: document.getElementById('namaSiswa').value,
-                    kelas: document.getElementById('kelas').value, // <-- BARIS BARU DITAMBAHKAN
+                    kelas: document.getElementById('kelas').value,
                     fileName: file.name,
                     mimeType: file.type,
                     file: e.target.result
                 };
-
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                })
+                fetch(scriptURL, { method: 'POST', body: JSON.stringify(data) })
                 .then(res => res.json())
                 .then(response => {
                     statusDiv.textContent = response.message;
@@ -184,18 +135,14 @@
                 .catch(error => {
                     statusDiv.className = 'status-gagal';
                     statusDiv.textContent = 'Error! ' + error.message;
-                    console.error('Error:', error);
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Kumpulkan Tugas';
                 });
             };
-            
             reader.readAsDataURL(file);
         });
     </script>
 </body>
 </html>
-
-
