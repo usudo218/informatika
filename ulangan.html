@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas / Ulangan - Informatika SMAN 1 Muncar</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
+        .header { background-color: #28a745; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        h1 { margin: 0; font-size: 1.5em; }
+        .student-info { background-color: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .task-container { background-color: #fff; padding: 20px; border-radius: 8px; }
+        .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .question:last-child { border-bottom: none; }
+        .question p { line-height: 1.6; word-wrap: break-word; }
+        .question-title { font-weight: bold; font-size: 1.1em; color: #333; }
+        .button-container { margin-top: 25px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .action-button { display: inline-block; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.2s, opacity 0.2s; border: none; cursor: pointer; font-size: 1em; }
+        .action-button:disabled { background-color: #aaa; cursor: not-allowed; }
+        .back-button { background-color: #6c757d; }
+        .download-button { background-color: #dc3545; }
+        .logout-button { background-color: #ffc107; color: #333; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Tugas & Ulangan Harian</h1>
+        <button class="action-button logout-button" id="logoutBtn">Logout</button>
+    </div>
+
+    <div id="content-to-print">
+        <div class="student-info">
+            <p><strong>Nama:</strong> <span id="studentName">Memuat...</span></p>
+            <p><strong>Kelas:</strong> <span id="studentClass">Memuat...</span></p>
+            <p><strong>No. Absen:</strong> <span id="studentAbsen">Memuat...</span></p>
+        </div>
+        <div class="task-container">
+            <h2>Soal Latihan VLSM (Variable Length Subnet Mask)</h2>
+            <p><strong>Petunjuk:</strong> Kerjakan soal di bawah ini sesuai dengan instruksi pada setiap nomor.</p>
+            <hr>
+            <div id="soal-container"><p>Memuat soal...</p></div>
+        </div>
+    </div>
+
+    <div class="button-container" style="padding: 0 20px 20px 20px;">
+        <button class="action-button download-button" id="downloadBtn">Download Soal (PDF)</button>
+        <a href="repository.html" class="action-button back-button">← Kembali ke Repositori</a>
+    </div>
+
+    <script>
+        // --- DATABASE SOAL ANDA (TETAP SAMA) ---
+        const dataSoal = [
+            {}, // Index 0 dikosongkan
+            { soal1: "Network `192.168.11.0/24` akan dibagi untuk: Gudang (55 host), Staf (25 host), Lobi (10 host), dan Security (4 host). Urutkan perhitungan dari host **terbesar**.", soal2: "Network `172.16.0.0/16` akan dibagi untuk: Jaringan CCTV (12 host), Lantai 4 (40 host), WiFi Karyawan (100 host), Lantai 3 (200 host), Lantai 2 (500 host), dan Lantai 1 (900 host). Urutkan perhitungan dari host **terkecil**." },
+            // ... Sisa data soal Anda di sini (tidak perlu diubah) ...
+            { soal1: "Network `192.168.44.0/24` akan dibagi untuk: Departemen Logistik (52 host), Keuangan (22 host), Resepsionis (12 host), dan Server Internal (5 host). Urutkan perhitungan dari host **terbesar**.", soal2: "Network `10.34.0.0/16` akan dibagi untuk: Ruang Kontrol (10 host), Divisi HRD (50 host), Jaringan Publik (120 host), Divisi Sales (150 host), Divisi Operasional (450 host), dan Jaringan Korporat (1000 host). Urutkan perhitungan dari host **terkecil**." }
+        ];
+        
+        let currentSoal = {};
+        
+        // PENYESUAIAN: Arahkan logout ke halaman login/dashboard utama Anda
+        function logout() { sessionStorage.clear(); window.location.href = 'index.html'; }
+
+        // Fungsi Generate PDF Anda (tidak perlu diubah)
+        function generatePdf() {
+            // ... Kode fungsi PDF Anda di sini (tidak perlu diubah) ...
+        }
+        
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('downloadBtn').addEventListener('click', generatePdf);
+
+        // Logika saat halaman dimuat (tidak perlu diubah)
+        window.addEventListener('DOMContentLoaded', () => {
+            // ... Kode logika halaman Anda di sini (tidak perlu diubah) ...
+        });
+    </script>
+</body>
+</html>
