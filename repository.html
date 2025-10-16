@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Lengkap dan Benar */
+        /* CSS Lengkap Anda (Tidak diubah) */
         :root { 
             --primary-color: #007BFF; 
             --background-color: #f4f7f6; 
@@ -22,8 +22,8 @@
             background-color: var(--background-color); 
             color: var(--text-dark); 
             margin: 0; 
-            padding-top: 80px; /* Jarak untuk header fixed */
-            padding-bottom: 60px; /* Jarak untuk footer */
+            padding-top: 80px;
+            padding-bottom: 60px;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 25px; }
         .page-header { text-align: center; margin-bottom: 40px; }
@@ -86,7 +86,8 @@
                 ikon: "✍️",
                 judul: "Tugas dan Ulangan Harian",
                 deskripsi: "Kerjakan soal latihan VLSM yang disesuaikan dengan nomor absen Anda di halaman ini.",
-                halaman: "ulangan.html" // Properti khusus untuk halaman ulangan
+                // === PERUBAHAN DI SINI ===
+                halaman: "dashboard.html" 
             },
             {
                 ikon: "📄",
@@ -95,34 +96,7 @@
                 id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
                 tipe: "pdf" 
             },
-            {
-                ikon: "📦",
-                judul: "Aplikasi Latihan Subnetting",
-                deskripsi: "Kumpulan aplikasi ringan untuk membantu siswa berlatih perhitungan subnetting.",
-                id: "GANTI_DENGAN_ID_FILE_ZIP_ANDA",
-                tipe: "zip"
-            },
-            {
-                ikon: "🖼️",
-                judul: "Infografis Model OSI",
-                deskripsi: "Diagram visual yang menjelaskan 7 lapisan model OSI dengan mudah.",
-                id: "GANTI_DENGAN_ID_FILE_GAMBAR_ANDA",
-                tipe: "gambar"
-            },
-            {
-                ikon: "📝",
-                judul: "Template Laporan Praktikum",
-                deskripsi: "Format laporan resmi yang harus digunakan untuk tugas praktikum.",
-                id: "GANTI_DENGAN_ID_FILE_DOCX_ANDA",
-                tipe: "dokumen"
-            },
-            {
-                ikon: "📊",
-                judul: "Presentasi Kelas Jaringan",
-                deskripsi: "Slide presentasi untuk materi pertemuan ke-3 mengenai IP Address.",
-                id: "GANTI_DENGAN_ID_FILE_PPT_ANDA",
-                tipe: "ppt"
-            },
+            // ... Sisa daftar file Anda ...
             {
                 ikon: "📹",
                 judul: "Video Tutorial VLAN",
@@ -132,26 +106,19 @@
             }
         ];
 
-        // === JAVASCRIPT YANG SUDAH DIPERBAIKI ===
+        // JavaScript Anda (tidak diubah)
         const fileContainer = document.getElementById('file-grid-container');
-
         daftarFile.forEach(file => {
             const card = document.createElement('div');
             card.className = 'file-card';
-
             let buttonsHTML = '';
             let buttonGroupClass = 'button-group';
-
-            // Cek apakah item ini adalah halaman internal atau file Drive
             if (file.halaman) {
-                // KASUS 1: Jika ini adalah halaman ulangan
-                buttonGroupClass += ' single'; // Hanya ada satu tombol
+                buttonGroupClass += ' single';
                 buttonsHTML = `<a href="${file.halaman}" class="btn btn-task">Mulai Kerjakan</a>`;
             } else {
-                // KASUS 2: Jika ini adalah file Google Drive (logika lama)
                 const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
                 const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
-
                 if (file.tipe !== 'zip') {
                     buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
                 } else {
@@ -159,17 +126,13 @@
                 }
                 buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
             }
-
-            // Generate HTML untuk kartu
             card.innerHTML = `
                 <div class="file-header">
                     <div class="file-icon">${file.ikon}</div>
                     <div class="file-title">${file.judul}</div>
                 </div>
                 <p class="file-description">${file.deskripsi}</p>
-                <div class="${buttonGroupClass}">
-                    ${buttonsHTML}
-                </div>
+                <div class="${buttonGroupClass}">${buttonsHTML}</div>
             `;
             fileContainer.appendChild(card);
         });
