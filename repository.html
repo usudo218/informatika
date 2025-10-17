@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS Lengkap Anda (Tidak diubah) */
         :root { 
             --primary-color: #007BFF; 
             --background-color: #f4f7f6; 
@@ -30,16 +29,8 @@
         .page-header h1 { font-size: 32px; font-weight: 700; }
         
         .site-header { background-color: var(--header-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.07); padding: 0 30px; position: fixed; top: 0; width: 100%; z-index: 1000; display: flex; justify-content: center; box-sizing: border-box; }
-        .header-content { display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 40px;
-            width: 100%;
-            max-width: 1200px; }
-        .header-title { 
-            font-size: 15px;
-            font-weight: 1200;
-            color: var(--text-dark); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; height: 80px; width: 100%; max-width: 1200px; }
+        .header-title { font-size: 20px; font-weight: 700; color: var(--text-dark); }
         .back-link { font-size: 14px; font-weight: 500; color: var(--primary-color); text-decoration: none; padding: 8px 15px; border-radius: 8px; transition: background-color 0.2s; }
         .back-link:hover { background-color: #e9ecef; }
         .site-footer { background-color: #343a40; color: #adb5bd; text-align: center; padding: 20px 30px; font-size: 14px; position: fixed; bottom: 0; width: 100%; box-sizing: border-box; }
@@ -71,8 +62,8 @@
 <body>
     <header class="site-header">
         <div class="header-content">
-            <div class="header-title">Informatika | Repository Materi</div>
-            <a href="index.html" class="back-link">⬅ Kembali ke Dashboard</a>
+            <div class="header-title">Repository Materi</div>
+            <a href="index.html" class="back-link">⬅ Kembali ke Portal Utama</a>
         </div>
     </header>
 
@@ -87,63 +78,48 @@
         © 2025 Kelas Informatika SMAN 1 Muncar
     </footer>
 
-    <script>
-        // Data file lengkap
-        const daftarFile = [
-            {
-                ikon: "✍️",
-                judul: "Tugas dan Ulangan Harian",
-                deskripsi: "Kerjakan soal latihan VLSM yang disesuaikan dengan nomor absen Anda di halaman ini.",
-                // === PERUBAHAN DI SINI ===
-                halaman: "dashboard.html" 
-            },
-            {
-                ikon: "📄",
-                judul: "Modul 1: Pengenalan Jaringan",
-                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
-                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
-                tipe: "pdf" 
-            },
-            // ... Sisa daftar file Anda ...
-            {
-                ikon: "📹",
-                judul: "Video Tutorial VLAN",
-                deskripsi: "Video panduan konfigurasi VLAN dasar di Cisco Packet Tracer.",
-                id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
-                tipe: "video"
-            }
-        ];
+    <script src="database-materi.js"></script>
 
-        // JavaScript Anda (tidak diubah)
+    <script>
         const fileContainer = document.getElementById('file-grid-container');
-        daftarFile.forEach(file => {
-            const card = document.createElement('div');
-            card.className = 'file-card';
-            let buttonsHTML = '';
-            let buttonGroupClass = 'button-group';
-            if (file.halaman) {
-                buttonGroupClass += ' single';
-                buttonsHTML = `<a href="${file.halaman}" class="btn btn-task">Mulai Kerjakan</a>`;
-            } else {
-                const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
-                const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
-                if (file.tipe !== 'zip') {
-                    buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
-                } else {
+
+        // Pastikan 'daftarFile' sudah dimuat dari file eksternal
+        if (typeof daftarFile !== 'undefined') {
+            daftarFile.forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'file-card';
+
+                let buttonsHTML = '';
+                let buttonGroupClass = 'button-group';
+
+                if (file.halaman) {
+                    // KASUS 1: Jika ini adalah halaman internal (seperti ulangan)
                     buttonGroupClass += ' single';
+                    buttonsHTML = `<a href="${file.halaman}" class="btn btn-task">Mulai Kerjakan</a>`;
+                } else {
+                    // KASUS 2: Jika ini adalah file Google Drive
+                    const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
+                    const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
+
+                    if (file.tipe !== 'zip') {
+                        buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
+                    } else {
+                        buttonGroupClass += ' single';
+                    }
+                    buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
                 }
-                buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
-            }
-            card.innerHTML = `
-                <div class="file-header">
-                    <div class="file-icon">${file.ikon}</div>
-                    <div class="file-title">${file.judul}</div>
-                </div>
-                <p class="file-description">${file.deskripsi}</p>
-                <div class="${buttonGroupClass}">${buttonsHTML}</div>
-            `;
-            fileContainer.appendChild(card);
-        });
+
+                card.innerHTML = `
+                    <div class="file-header">
+                        <div class="file-icon">${file.ikon}</div>
+                        <div class="file-title">${file.judul}</div>
+                    </div>
+                    <p class="file-description">${file.deskripsi}</p>
+                    <div class="${buttonGroupClass}">${buttonsHTML}</div>
+                `;
+                fileContainer.appendChild(card);
+            });
+        }
     </script>
 </body>
 </html>
