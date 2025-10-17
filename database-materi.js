@@ -20,6 +20,38 @@
                 id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
                 tipe: "pdf" 
             },
+            ,
+            {
+                ikon: "📄",
+                judul: "Modul 3: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            ,
+            {
+                ikon: "📄",
+                judul: "Modul 4: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            ,
+            {
+                ikon: "📄",
+                judul: "Modul 5: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            ,
+            {
+                ikon: "📄",
+                judul: "Modul 6: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
             // ... Sisa daftar file Anda ...
             {
                 ikon: "📹",
