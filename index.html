@@ -22,15 +22,15 @@
             background-color: var(--background-color);
             color: var(--text-dark);
             margin: 0;
-            padding-top: 80px; /* Jarak untuk header fixed */
-            padding-bottom: 60px; /* Jarak untuk footer */
+            padding-top: 80px;
+            padding-bottom: 60px;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
-        /* === HEADER BARU === */
+        /* Header & Footer (Tidak diubah) */
         .site-header {
             background-color: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0,0,0,0.07);
@@ -40,23 +40,18 @@
             width: 100%;
             z-index: 1000;
             display: flex;
-            justify-content: center; /* Tengahkan konten header */
+            justify-content: center;
             box-sizing: border-box;
         }
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 40px;
+            height: 80px;
             width: 100%;
             max-width: 1200px;
         }
-        .header-title {
-            font-size: 15px;
-            font-weight: 1200;
-            color: var(--text-dark);
-    }
-        /* === FOOTER BARU === */
+        .header-title { font-size: 20px; font-weight: 700; color: var(--text-dark); }
         .site-footer {
             background-color: #343a40;
             color: #adb5bd;
@@ -68,6 +63,8 @@
             width: 100%;
             box-sizing: border-box;
         }
+        
+        /* Konten Dashboard (Tidak diubah) */
         .dashboard-container { text-align: center; }
         header h1 { font-size: 36px; font-weight: 700; margin-bottom: 10px; }
         header p { font-size: 18px; color: var(--text-light); margin-bottom: 40px; }
@@ -82,7 +79,55 @@
         .btn-repo:hover { background-color: #0056b3; }
         .btn-upload { background-color: var(--secondary-color); }
         .btn-upload:hover { background-color: #1e7e34; }
-        @media (max-width: 768px) { header h1 { font-size: 28px; } header p { font-size: 16px; } .card-grid { flex-direction: column; align-items: center; } .header-title { font-size: 18px; } }
+
+        /* ======================================= */
+        /* === PENYESUAIAN KHUSUS UNTUK TAMPILAN HP === */
+        /* ======================================= */
+        @media (max-width: 768px) {
+            /* 1. Perkecil padding utama body */
+            body {
+                padding-top: 60px; /* Kurangi tinggi header */
+            }
+            .container {
+                padding: 15px; /* Kurangi padding samping */
+            }
+
+            /* 2. Perkecil Header */
+            .site-header {
+                padding: 0 15px;
+            }
+            .header-content {
+                height: 60px; /* Buat header lebih pendek */
+            }
+            .header-title {
+                font-size: 18px; /* Perkecil judul di header */
+            }
+
+            /* 3. Perkecil ukuran font judul utama */
+            header h1 {
+                font-size: 28px;
+            }
+            header p {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            /* 4. Buat kartu lebih ringkas */
+            .card-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px; /* Kurangi jarak antar kartu */
+            }
+            .card {
+                padding: 25px; /* Kurangi padding di dalam kartu */
+            }
+            .card-icon {
+                font-size: 40px; /* Perkecil ikon */
+            }
+            .card h2 {
+                font-size: 20px; /* Perkecil judul kartu */
+            }
+        }
     </style>
 </head>
 <body>
