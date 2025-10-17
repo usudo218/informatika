@@ -59,5 +59,12 @@
                 deskripsi: "Video panduan konfigurasi VLAN dasar di Cisco Packet Tracer.",
                 id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
                 tipe: "video"
+            },
+   {
+                ikon: "📹",
+                judul: "Video Tutorial Subnettting",
+                deskripsi: "Video panduan Subnetting.",
+                id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
+                tipe: "video"
             }
         ];
