@@ -81,14 +81,14 @@
             color: #dc3545;
             font-size: 14px;
             margin-top: 15px;
-            min-height: 20px; /* Agar layout tidak bergeser saat error muncul */
-            display: none; /* Disembunyikan secara default */
+            min-height: 20px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <a href="index.html" class="back-link">⬅ Kembali ke Dashboard</a>
+        <a href="index.html" class="back-link">⬅ Kembali ke Portal Utama</a>
         
         <div class="login-container">
             <h2>Login Siswa</h2>
@@ -107,239 +107,24 @@
         </div>
     </div>
 
-    <script>
-       // --- PASTIKAN SEMUA DATA SISWA ANDA ADA DI SINI ---
-        const studentDatabase = [
-           { absen: 1, nama: "Aditya Ramadhani", kelas: "10-1" , user: "101001", password: "2355"},
-{ absen: 2, nama: "Aira Nafisatul Ainiyah", kelas: "10-1" , user: "101002", password: "2380"},
-{ absen: 3, nama: "Ajja Albar Jauj Apriss", kelas: "10-1" , user: "101003", password: "2342"},
-{ absen: 4, nama: "Alderio Ilham Qodzafi", kelas: "10-1" , user: "101004", password: "2406"},
-{ absen: 5, nama: "Aldhi Sanjaya", kelas: "10-1" , user: "101005", password: "2322"},
-{ absen: 6, nama: "Aldy Kurniawan Saputra", kelas: "10-1" , user: "101006", password: "2353"},
-{ absen: 7, nama: "Amelia Ng Jiaxin", kelas: "10-1" , user: "101007", password: "2382"},
-{ absen: 8, nama: "Antonio Junior Liwa Putra", kelas: "10-1" , user: "101008", password: "2310"},
-{ absen: 9, nama: "Aryan Dwi Nurbekti", kelas: "10-1" , user: "101009", password: "2401"},
-{ absen: 10, nama: "Dafa Parvaiz Zechariah Windriyono", kelas: "10-1" , user: "101010", password: "2321"},
-{ absen: 11, nama: "Dimas Maulana", kelas: "10-1" , user: "101011", password: "2337"},
-{ absen: 12, nama: "Diva Alicia Putri", kelas: "10-1" , user: "101012", password: "2314"},
-{ absen: 13, nama: "Era Fatravia", kelas: "10-1" , user: "101013", password: "2371"},
-{ absen: 14, nama: "Fahza Aliya Putri", kelas: "10-1" , user: "101014", password: "2405"},
-{ absen: 15, nama: "Faza Askia Tamma Al Faruq", kelas: "10-1" , user: "101015", password: "2362"},
-{ absen: 16, nama: "Febri Ardiansyah Putra", kelas: "10-1" , user: "101016", password: "2394"},
-{ absen: 17, nama: "Felcia Agasi", kelas: "10-1" , user: "101017", password: "2380"},
-{ absen: 18, nama: "Fiza Arif Uqianus Fan", kelas: "10-1" , user: "101018", password: "2396"},
-{ absen: 19, nama: "Ghina Jifara Wangi", kelas: "10-1" , user: "101019", password: "2357"},
-{ absen: 20, nama: "Jessi Tirta Dharma Ayu Puspayogi", kelas: "10-1" , user: "101020", password: "2381"},
-{ absen: 21, nama: "Keysha Anindita Suri Pratama", kelas: "10-1" , user: "101021", password: "2402"},
-{ absen: 22, nama: "Leavy Aqeyla Ayatul Husna", kelas: "10-1" , user: "101022", password: "2313"},
-{ absen: 23, nama: "M Andy Begarrt Prassetyo", kelas: "10-1" , user: "101023", password: "2388"},
-{ absen: 24, nama: "Marsya Dwi Saputri", kelas: "10-1" , user: "101024", password: "2342"},
-{ absen: 25, nama: "Mutiara Safitri Mustofa", kelas: "10-1" , user: "101025", password: "2341"},
-{ absen: 26, nama: "Nazlafatul Azizah", kelas: "10-1" , user: "101026", password: "2361"},
-{ absen: 27, nama: "Putri Rizqi Ria Sugiyarto", kelas: "10-1" , user: "101027", password: "2358"},
-{ absen: 28, nama: "Rera Mustika Resima", kelas: "10-1" , user: "101028", password: "2328"},
-{ absen: 29, nama: "Riska Novita Putri", kelas: "10-1" , user: "101029", password: "2325"},
-{ absen: 30, nama: "Safa Tiara Ramadani", kelas: "10-1" , user: "101030", password: "2315"},
-{ absen: 31, nama: "Seyla Erfa Amanda Putri", kelas: "10-1" , user: "101031", password: "2361"},
-{ absen: 32, nama: "Wifa Riski Ramadani", kelas: "10-1" , user: "101032", password: "2339"},
-{ absen: 1, nama: "Akhmad Fauzi Fadilah", kelas: "10-2" , user: "102001", password: "2317"},
-{ absen: 2, nama: "Alvino Ganesha Putra", kelas: "10-2" , user: "102002", password: "2331"},
-{ absen: 3, nama: "Ammar Sahadat Dirgantara", kelas: "10-2" , user: "102003", password: "2377"},
-{ absen: 4, nama: "Anggita Fitri Fauziah", kelas: "10-2" , user: "102004", password: "2382"},
-{ absen: 5, nama: "Aziziah Jacinda Ruela Mahsa Rahmadi", kelas: "10-2" , user: "102005", password: "2349"},
-{ absen: 6, nama: "Baim", kelas: "10-2" , user: "102006", password: "2380"},
-{ absen: 7, nama: "Dhaniel Arifin", kelas: "10-2" , user: "102007", password: "2398"},
-{ absen: 8, nama: "Dina Aprilia", kelas: "10-2" , user: "102008", password: "2313"},
-{ absen: 9, nama: "Eka Reza Ramadhani", kelas: "10-2" , user: "102009", password: "2356"},
-{ absen: 10, nama: "Fahrizal Bahtiar Hamzah", kelas: "10-2" , user: "102010", password: "2386"},
-{ absen: 11, nama: "Feliza Artha Jasmine", kelas: "10-2" , user: "102011", password: "2387"},
-{ absen: 12, nama: "Galuh Saputri", kelas: "10-2" , user: "102012", password: "2374"},
-{ absen: 13, nama: "Gantari Zia Bhumyamca", kelas: "10-2" , user: "102013", password: "2388"},
-{ absen: 14, nama: "Hana Fitria", kelas: "10-2" , user: "102014", password: "2345"},
-{ absen: 15, nama: "Kevin Juliano Sandra Pratama", kelas: "10-2" , user: "102015", password: "2339"},
-{ absen: 16, nama: "Marvin Nazalul Alfizar", kelas: "10-2" , user: "102016", password: "2316"},
-{ absen: 17, nama: "Moh Ridho Dzikrullah", kelas: "10-2" , user: "102017", password: "2375"},
-{ absen: 18, nama: "Mohammad Arya Raditya", kelas: "10-2" , user: "102018", password: "2318"},
-{ absen: 19, nama: "Mohm Anas Maliki", kelas: "10-2" , user: "102019", password: "2392"},
-{ absen: 20, nama: "Muhammad Ariansyah", kelas: "10-2" , user: "102020", password: "2354"},
-{ absen: 21, nama: "Mutiara Dwi Apriliani", kelas: "10-2" , user: "102021", password: "2317"},
-{ absen: 22, nama: "Myisha Amelia Jauhari", kelas: "10-2" , user: "102022", password: "2364"},
-{ absen: 23, nama: "Nabila Gabrela Pradita", kelas: "10-2" , user: "102023", password: "2406"},
-{ absen: 24, nama: "Naila Zulfi Az Zahra", kelas: "10-2" , user: "102024", password: "2318"},
-{ absen: 25, nama: "Nayla Mufida", kelas: "10-2" , user: "102025", password: "2390"},
-{ absen: 26, nama: "Nova Widiyanti", kelas: "10-2" , user: "102026", password: "2402"},
-{ absen: 27, nama: "Revy Maulida Hasanah", kelas: "10-2" , user: "102027", password: "2384"},
-{ absen: 28, nama: "Rista Ayu Putri", kelas: "10-2" , user: "102028", password: "2332"},
-{ absen: 29, nama: "Sofiatul Azizah", kelas: "10-2" , user: "102029", password: "2375"},
-{ absen: 30, nama: "Widya Julita Saputri", kelas: "10-2" , user: "102030", password: "2356"},
-{ absen: 31, nama: "Zahra Thusita", kelas: "10-2" , user: "102031", password: "2352"},
-{ absen: 32, nama: "Zelvia Ayu Verasari", kelas: "10-2" , user: "102032", password: "2391"},
-{ absen: 1, nama: "Alysa Rani Zalianti", kelas: "10-3" , user: "103001", password: "2368"},
-{ absen: 2, nama: "Asyafa Zahra Salsabilla", kelas: "10-3" , user: "103002", password: "2406"},
-{ absen: 3, nama: "Aulia Zulfalita Pratama", kelas: "10-3" , user: "103003", password: "2383"},
-{ absen: 4, nama: "Catur Ahmad Hasyim", kelas: "10-3" , user: "103004", password: "2337"},
-{ absen: 5, nama: "Cheisya Anjela Putri", kelas: "10-3" , user: "103005", password: "2386"},
-{ absen: 6, nama: "Devi Wulan Savira", kelas: "10-3" , user: "103006", password: "2316"},
-{ absen: 7, nama: "Dhea Bunga Aprillia", kelas: "10-3" , user: "103007", password: "2313"},
-{ absen: 8, nama: "Dinda Sekar Arumni", kelas: "10-3" , user: "103008", password: "2344"},
-{ absen: 9, nama: "Dinda Septiana Dewi", kelas: "10-3" , user: "103009", password: "2368"},
-{ absen: 10, nama: "Ega Fabian Yafa", kelas: "10-3" , user: "103010", password: "2337"},
-{ absen: 11, nama: "Fahrina Bunga Aprillia", kelas: "10-3" , user: "103011", password: "2346"},
-{ absen: 12, nama: "Firdaus Ibnu Hadi", kelas: "10-3" , user: "103012", password: "2320"},
-{ absen: 13, nama: "Franda Aprilia Wuri Hartono", kelas: "10-3" , user: "103013", password: "2373"},
-{ absen: 14, nama: "Geysa Hasta Saputra", kelas: "10-3" , user: "103014", password: "2379"},
-{ absen: 15, nama: "Gilang Fitrah Darmawan", kelas: "10-3" , user: "103015", password: "2335"},
-{ absen: 16, nama: "Icha Izzatul Jannah", kelas: "10-3" , user: "103016", password: "2320"},
-{ absen: 17, nama: "Moh Azizul Hilmi", kelas: "10-3" , user: "103017", password: "2405"},
-{ absen: 18, nama: "Mohammad Vale Septino Rossi", kelas: "10-3" , user: "103018", password: "2336"},
-{ absen: 19, nama: "Muh. Irfan", kelas: "10-3" , user: "103019", password: "2405"},
-{ absen: 20, nama: "Nabila Putri Awalia", kelas: "10-3" , user: "103020", password: "2329"},
-{ absen: 21, nama: "Naysila Dwi Sasa Bila Putri Suryanto", kelas: "10-3" , user: "103021", password: "2359"},
-{ absen: 22, nama: "Putri Aura Margareta", kelas: "10-3" , user: "103022", password: "2338"},
-{ absen: 23, nama: "Rahel Niluh Agustina", kelas: "10-3" , user: "103023", password: "2364"},
-{ absen: 24, nama: "Ramadhan Tegar Pamuji", kelas: "10-3" , user: "103024", password: "2314"},
-{ absen: 25, nama: "Risma Ainun Nafiah", kelas: "10-3" , user: "103025", password: "2394"},
-{ absen: 26, nama: "Robby Jati Murti", kelas: "10-3" , user: "103026", password: "2373"},
-{ absen: 27, nama: "Suci Lintang Kinasih", kelas: "10-3" , user: "103027", password: "2344"},
-{ absen: 28, nama: "Valecia Anggraeni Sasmita Putri", kelas: "10-3" , user: "103028", password: "2386"},
-{ absen: 29, nama: "Wahyu Rizky Ramdhani", kelas: "10-3" , user: "103029", password: "2335"},
-{ absen: 30, nama: "Wanda Putri Aprilia", kelas: "10-3" , user: "103030", password: "2409"},
-{ absen: 31, nama: "Yoriza Danish Silvierra", kelas: "10-3" , user: "103031", password: "2360"},
-{ absen: 1, nama: "Amelia Junita Cahyani", kelas: "10-4" , user: "104001", password: "2368"},
-{ absen: 2, nama: "Andrianu Dwi Putra Kusuma", kelas: "10-4" , user: "104002", password: "2386"},
-{ absen: 3, nama: "Bayu Putra Ramadhan", kelas: "10-4" , user: "104003", password: "2358"},
-{ absen: 4, nama: "Cahyarani Faturohmah", kelas: "10-4" , user: "104004", password: "2320"},
-{ absen: 5, nama: "Citra Ayu Vergita", kelas: "10-4" , user: "104005", password: "2373"},
-{ absen: 6, nama: "Disty Eka Febiana", kelas: "10-4" , user: "104006", password: "2310"},
-{ absen: 7, nama: "Diva Puspita Sari", kelas: "10-4" , user: "104007", password: "2358"},
-{ absen: 8, nama: "Ferdy Id Andry Yanto", kelas: "10-4" , user: "104008", password: "2347"},
-{ absen: 9, nama: "Fitri Nur Aini", kelas: "10-4" , user: "104009", password: "2329"},
-{ absen: 10, nama: "Iga Mahareza", kelas: "10-4" , user: "104010", password: "2313"},
-{ absen: 11, nama: "Ketut Sony Loke Budi Wiguna", kelas: "10-4" , user: "104011", password: "2361"},
-{ absen: 12, nama: "Mayla Aura Andini", kelas: "10-4" , user: "104012", password: "2335"},
-{ absen: 13, nama: "Meyka Nindi Agustin", kelas: "10-4" , user: "104013", password: "2378"},
-{ absen: 14, nama: "Moh. Rafka Eka Mannansyah", kelas: "10-4" , user: "104014", password: "2311"},
-{ absen: 15, nama: "Mohammad Ibra Ravito", kelas: "10-4" , user: "104015", password: "2401"},
-{ absen: 16, nama: "Mohraffi Alfaridzi Ardiansyah", kelas: "10-4" , user: "104016", password: "2360"},
-{ absen: 17, nama: "Muhamad Artha Mauridho", kelas: "10-4" , user: "104017", password: "2335"},
-{ absen: 18, nama: "Muhammad Wahyu Puji Nugraha", kelas: "10-4" , user: "104018", password: "2395"},
-{ absen: 19, nama: "Naura Gellicia Tiffany", kelas: "10-4" , user: "104019", password: "2387"},
-{ absen: 20, nama: "Okta Dwi Nuraini", kelas: "10-4" , user: "104020", password: "2330"},
-{ absen: 21, nama: "Rahma Taufik Ridani", kelas: "10-4" , user: "104021", password: "2328"},
-{ absen: 22, nama: "Raka Putra Anggara", kelas: "10-4" , user: "104022", password: "2342"},
-{ absen: 23, nama: "Sandy Virzatullah", kelas: "10-4" , user: "104023", password: "2342"},
-{ absen: 24, nama: "Selvia Junita", kelas: "10-4" , user: "104024", password: "2398"},
-{ absen: 25, nama: "Shinta Metta Lestari Ningsih", kelas: "10-4" , user: "104025", password: "2401"},
-{ absen: 26, nama: "Stefa Rina Putri Anindita", kelas: "10-4" , user: "104026", password: "2391"},
-{ absen: 27, nama: "Suluh Prabandaru", kelas: "10-4" , user: "104027", password: "2322"},
-{ absen: 28, nama: "Vanesa Septiana Putri", kelas: "10-4" , user: "104028", password: "2375"},
-{ absen: 29, nama: "Wawendra Wahyu Bimarta", kelas: "10-4" , user: "104029", password: "2406"},
-{ absen: 30, nama: "Wulan Ceisha Ramadani", kelas: "10-4" , user: "104030", password: "2336"},
-{ absen: 31, nama: "Yeni Dwi Prastyani", kelas: "10-4" , user: "104031", password: "2385"},
-{ absen: 32, nama: "Yuyun Alfiana", kelas: "10-4" , user: "104032", password: "2379"},
-{ absen: 1, nama: "Aisyah Okta Livina Laurenz", kelas: "10-5" , user: "105001", password: "2397"},
-{ absen: 2, nama: "Alfida Hildana Aprilia", kelas: "10-5" , user: "105002", password: "2408"},
-{ absen: 3, nama: "Amiral Jordan Arva", kelas: "10-5" , user: "105003", password: "2320"},
-{ absen: 4, nama: "Anggun Virma Virnanda Devi", kelas: "10-5" , user: "105004", password: "2395"},
-{ absen: 5, nama: "Aura Cintya Arbiela Putri", kelas: "10-5" , user: "105005", password: "2361"},
-{ absen: 6, nama: "Aura Kirana Maulida", kelas: "10-5" , user: "105006", password: "2410"},
-{ absen: 7, nama: "Cesya Mawra Pawlina Sari", kelas: "10-5" , user: "105007", password: "2337"},
-{ absen: 8, nama: "Dea Nofa Leona Dewi", kelas: "10-5" , user: "105008", password: "2343"},
-{ absen: 9, nama: "Eko Harianto", kelas: "10-5" , user: "105009", password: "2393"},
-{ absen: 10, nama: "Farelio Brilyan Syah", kelas: "10-5" , user: "105010", password: "2353"},
-{ absen: 11, nama: "Frisya Maulida Santika", kelas: "10-5" , user: "105011", password: "2348"},
-{ absen: 12, nama: "Geisha Dwi Aprilia", kelas: "10-5" , user: "105012", password: "2401"},
-{ absen: 13, nama: "Gytha Athiva Qanita Azaria", kelas: "10-5" , user: "105013", password: "2389"},
-{ absen: 14, nama: "Lenny Zhifilia Nugrahani", kelas: "10-5" , user: "105014", password: "2323"},
-{ absen: 15, nama: "Maulana Ishak", kelas: "10-5" , user: "105015", password: "2378"},
-{ absen: 16, nama: "Moh Fakhri Lutfi", kelas: "10-5" , user: "105016", password: "2368"},
-{ absen: 17, nama: "Mohammad Soeltan Sofyan Arridho", kelas: "10-5" , user: "105017", password: "2392"},
-{ absen: 18, nama: "Muhamad Fahrezi", kelas: "10-5" , user: "105018", password: "2389"},
-{ absen: 19, nama: "Muhamad Nata Maurino", kelas: "10-5" , user: "105019", password: "2369"},
-{ absen: 20, nama: "Muhammad Khoiron Thoifur", kelas: "10-5" , user: "105020", password: "2365"},
-{ absen: 21, nama: "Nadifah Farhanatul Mabruroh", kelas: "10-5" , user: "105021", password: "2403"},
-{ absen: 22, nama: "Nadin Sya Prawesti", kelas: "10-5" , user: "105022", password: "2329"},
-{ absen: 23, nama: "Neng Ayu Javanza Quine Yuandri", kelas: "10-5" , user: "105023", password: "2367"},
-{ absen: 24, nama: "Nurul Izzati", kelas: "10-5" , user: "105024", password: "2400"},
-{ absen: 25, nama: "Putri Bunga Cahyani", kelas: "10-5" , user: "105025", password: "2350"},
-{ absen: 26, nama: "Rafansyah Wahyu Pratama", kelas: "10-5" , user: "105026", password: "2399"},
-{ absen: 27, nama: "Rega Tegar Maulana Hakiki", kelas: "10-5" , user: "105027", password: "2378"},
-{ absen: 28, nama: "Senja Dinanti", kelas: "10-5" , user: "105028", password: "2352"},
-{ absen: 29, nama: "Syerila Silfi Maulida Syafii", kelas: "10-5" , user: "105029", password: "2347"},
-{ absen: 30, nama: "Tiara Ayu Sabrina", kelas: "10-5" , user: "105030", password: "2404"},
-{ absen: 31, nama: "Wulidatul Afifah", kelas: "10-5" , user: "105031", password: "2403"},
-{ absen: 1, nama: "Ajeng Ulandari", kelas: "10-6" , user: "106001", password: "2351"},
-{ absen: 2, nama: "Annisa Putri Zhaki", kelas: "10-6" , user: "106002", password: "2374"},
-{ absen: 3, nama: "Aurel Jihan Panesa", kelas: "10-6" , user: "106003", password: "2332"},
-{ absen: 4, nama: "Aviza Kirana Putri", kelas: "10-6" , user: "106004", password: "2332"},
-{ absen: 5, nama: "Bunga Rachmatyas Mahani", kelas: "10-6" , user: "106005", password: "2403"},
-{ absen: 6, nama: "Chen Lixin Nur Zaskia", kelas: "10-6" , user: "106006", password: "2357"},
-{ absen: 7, nama: "Dela Cahya Maulita", kelas: "10-6" , user: "106007", password: "2406"},
-{ absen: 8, nama: "Devi Mareta", kelas: "10-6" , user: "106008", password: "2344"},
-{ absen: 9, nama: "Elina Amelia Margareta", kelas: "10-6" , user: "106009", password: "2379"},
-{ absen: 10, nama: "Holidatul Fitri", kelas: "10-6" , user: "106010", password: "2320"},
-{ absen: 11, nama: "I Gede Putra Yasa", kelas: "10-6" , user: "106011", password: "2407"},
-{ absen: 12, nama: "Kiki Rosa Kamilia", kelas: "10-6" , user: "106012", password: "2410"},
-{ absen: 13, nama: "Linda Tri Yuliyani", kelas: "10-6" , user: "106013", password: "2374"},
-{ absen: 14, nama: "Lutfi Aril Prayoga", kelas: "10-6" , user: "106014", password: "2385"},
-{ absen: 15, nama: "Meylanie Anggi Zaziva", kelas: "10-6" , user: "106015", password: "2311"},
-{ absen: 16, nama: "Moh Danial Herdyansah", kelas: "10-6" , user: "106016", password: "2408"},
-{ absen: 17, nama: "Mohammad Toriq Hidayah", kelas: "10-6" , user: "106017", password: "2325"},
-{ absen: 18, nama: "Muhafreza Saputra", kelas: "10-6" , user: "106018", password: "2386"},
-{ absen: 19, nama: "Muhammad Ibrahimmovic", kelas: "10-6" , user: "106019", password: "2392"},
-{ absen: 20, nama: "Nanda Sasmita", kelas: "10-6" , user: "106020", password: "2346"},
-{ absen: 21, nama: "Poni Agriandari", kelas: "10-6" , user: "106021", password: "2356"},
-{ absen: 22, nama: "Rahma Intan Permadhani", kelas: "10-6" , user: "106022", password: "2394"},
-{ absen: 23, nama: "Refan Abi Firmansyah", kelas: "10-6" , user: "106023", password: "2364"},
-{ absen: 24, nama: "Riska Maulidi Ulfa", kelas: "10-6" , user: "106024", password: "2376"},
-{ absen: 25, nama: "Saskia Putri Cahyaningtyas", kelas: "10-6" , user: "106025", password: "2376"},
-{ absen: 26, nama: "Septian Surya Rhomadhoni", kelas: "10-6" , user: "106026", password: "2343"},
-{ absen: 27, nama: "Sofyan Zahuri Abdullah", kelas: "10-6" , user: "106027", password: "2401"},
-{ absen: 28, nama: "Syava Dyani Putri", kelas: "10-6" , user: "106028", password: "2331"},
-{ absen: 29, nama: "Vana Aghista Ramadhani", kelas: "10-6" , user: "106029", password: "2369"},
-{ absen: 30, nama: "Zelih Aurela", kelas: "10-6" , user: "106030", password: "2312"},
-{ absen: 1, nama: "Achmad Fairus Raditya", kelas: "10-7" , user: "107001", password: "2340"},
-{ absen: 2, nama: "Ah Farel Yanuar D.S.", kelas: "10-7" , user: "107002", password: "2354"},
-{ absen: 3, nama: "Alvian Marifatul Abror", kelas: "10-7" , user: "107003", password: "2326"},
-{ absen: 4, nama: "Andika Prasetya", kelas: "10-7" , user: "107004", password: "2340"},
-{ absen: 5, nama: "Anggun Tri Mulyani", kelas: "10-7" , user: "107005", password: "2313"},
-{ absen: 6, nama: "Caca Herliana Putri", kelas: "10-7" , user: "107006", password: "2358"},
-{ absen: 7, nama: "Dila Agustiya Nengseh", kelas: "10-7" , user: "107007", password: "2362"},
-{ absen: 8, nama: "Fathir Lanang Y.", kelas: "10-7" , user: "107008", password: "2402"},
-{ absen: 9, nama: "Feby Putri Sugiansyah", kelas: "10-7" , user: "107009", password: "2379"},
-{ absen: 10, nama: "Flora Ayu Valencya", kelas: "10-7" , user: "107010", password: "2354"},
-{ absen: 11, nama: "Fredyco Raka", kelas: "10-7" , user: "107011", password: "2393"},
-{ absen: 12, nama: "Jayanti Bunga Lestari", kelas: "10-7" , user: "107012", password: "2377"},
-{ absen: 13, nama: "Kayla Maretha Putri Puspitarini", kelas: "10-7" , user: "107013", password: "2338"},
-{ absen: 14, nama: "Lavenia Vega Putri Manik", kelas: "10-7" , user: "107014", password: "2398"},
-{ absen: 15, nama: "Moh Arlyn Dwi Andika", kelas: "10-7" , user: "107015", password: "2406"},
-{ absen: 16, nama: "Moh. Rifki Nurhidayat", kelas: "10-7" , user: "107016", password: "2333"},
-{ absen: 17, nama: "Mohamad Alfian Maulana", kelas: "10-7" , user: "107017", password: "2374"},
-{ absen: 18, nama: "Mohamad Andrian Maulana", kelas: "10-7" , user: "107018", password: "2341"},
-{ absen: 19, nama: "Muhamad Azam Mubarok", kelas: "10-7" , user: "107019", password: "2366"},
-{ absen: 20, nama: "Muhamad Danar Izha Rohil", kelas: "10-7" , user: "107020", password: "2404"},
-{ absen: 21, nama: "Muhammad Priya Daniel W.", kelas: "10-7" , user: "107021", password: "2406"},
-{ absen: 22, nama: "Muzdhalifa", kelas: "10-7" , user: "107022", password: "2393"},
-{ absen: 23, nama: "Nagita Nur Oktaviani", kelas: "10-7" , user: "107023", password: "2370"},
-{ absen: 24, nama: "Naila Izza Nurjanah", kelas: "10-7" , user: "107024", password: "2348"},
-{ absen: 25, nama: "Nora Sahbania Fachrozie", kelas: "10-7" , user: "107025", password: "2387"},
-{ absen: 26, nama: "Ramadhan", kelas: "10-7" , user: "107026", password: "2321"},
-{ absen: 27, nama: "Reyno Arventa Hadin Pratama", kelas: "10-7" , user: "107027", password: "2381"},
-{ absen: 28, nama: "Salma Rahadatul Aisy", kelas: "10-7" , user: "107028", password: "2341"},
-{ absen: 29, nama: "Septina Auliya Ramadani", kelas: "10-7" , user: "107029", password: "2333"},
-{ absen: 30, nama: "Siti Putri Nur Aiyizah", kelas: "10-7" , user: "107030", password: "2376"},
-{ absen: 31, nama: "Stefani Angelina Darmanota", kelas: "10-7" , user: "107031", password: "2360"},
-{ absen: 32, nama: "Vierra Dipuspa Deshinta Sugiono", kelas: "10-7" , user: "107032", password: "2327"},
-        ];
+    <script src="database-siswa.js"></script>
 
+    <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah form refresh halaman
+            event.preventDefault();
 
             const user = document.getElementById('user').value.trim();
             const password = document.getElementById('password').value.trim();
             const errorMessage = document.getElementById('error-message');
 
-            // Cari siswa di database
+            // Cek apakah 'studentDatabase' sudah ada
+            if (typeof studentDatabase === 'undefined') {
+                errorMessage.textContent = 'Gagal memuat data siswa. Hubungi guru.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Cari siswa di 'studentDatabase' yang sudah dimuat dari file eksternal
             const foundStudent = studentDatabase.find(student => student.user === user && student.password === password);
 
             if (foundStudent) {
@@ -359,4 +144,3 @@
     </script>
 </body>
 </html>
-
