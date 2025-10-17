@@ -45,23 +45,22 @@
 
     <div class="button-container" style="padding: 0 20px 20px 20px;">
         <button class="action-button download-button" id="downloadBtn">Download Soal (PDF)</button>
-        <a href="index.html" class="action-button back-button">← Kembali ke Dashboard</a>
+        <a href="dashboard.html" class="action-button back-button">← Kembali ke Halaman Login</a>
     </div>
+    
+    <script src="database-soal.js"></script>
 
     <script>
-        // --- DATABASE SOAL LENGKAP (SUDAH DITAMBAHKAN HINGGA ABSEN 34) ---
-      <script src="database-soal.js"></script> <script>
-    // Variabel global untuk menyimpan soal siswa yang sedang login
-    let currentSoal = {};
-
-    // Variabel global untuk menyimpan soal siswa yang sedang login
-        let currentSoal = {};.
-</script>    
+        // Variabel global untuk menyimpan soal siswa yang sedang login
+        let currentSoal = {};
         
         // Fungsi Logout
-        function logout() { sessionStorage.clear(); window.location.href = 'index.html'; }
+        function logout() { 
+            sessionStorage.clear(); 
+            window.location.href = 'index.html'; 
+        }
 
-        // Fungsi Generate PDF yang sudah terbukti bekerja
+        // Fungsi Generate PDF 
         function generatePdf() {
             const downloadBtn = document.getElementById('downloadBtn');
             downloadBtn.disabled = true;
@@ -124,7 +123,7 @@
 
             if (!name || !absen) {
                 alert('Sesi tidak ditemukan! Anda akan dikembalikan ke halaman login.');
-                window.location.href = 'index.html';
+                window.location.href = 'dashboard.html';
                 return;
             }
 
@@ -135,10 +134,9 @@
             const soalContainer = document.getElementById('soal-container');
             const noAbsen = parseInt(absen);
             
-            // Simpan soal siswa ke variabel global untuk diakses nanti oleh PDF
-            currentSoal = dataSoal[noAbsen] || {};
-            
-            if (currentSoal.soal1) {
+            // Cek apakah dataSoal sudah dimuat
+            if (typeof dataSoal !== 'undefined' && dataSoal[noAbsen]) {
+                currentSoal = dataSoal[noAbsen];
                 soalContainer.innerHTML = `
                     <div class="question"><p class="question-title">Soal 1:</p><p>${currentSoal.soal1}</p></div>
                     <div class="question"><p class="question-title">Soal 2:</p><p>${currentSoal.soal2}</p></div>
