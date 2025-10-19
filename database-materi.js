@@ -17,7 +17,7 @@
                 ikon: "📄",
                 judul: "Modul 2: Modul Jaringan",
                 deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
-                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                id: "https://www.youtube.com/watch?v=lnTJ2ukQ0nE",
                 tipe: "pdf" 
             },
             ,
