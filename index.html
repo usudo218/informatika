@@ -68,24 +68,58 @@
         .dashboard-container { text-align: center; }
         header h1 { font-size: 36px; font-weight: 700; margin-bottom: 10px; }
         header p { font-size: 18px; color: var(--text-light); margin-bottom: 40px; }
-        .card-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .card-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap; /* Ini penting agar rapi di HP */
+        }
+        
         .card {
             background-color: var(--card-background);
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            padding: 30px; /* <--- UBAH INI (dari 35px) */
+            
+            /* Ini yang diperkecil agar muat 3 */
+            padding: 30px; 
             width: 100%;
-            max-width: 260px; /* <--- UBAH INI (dari 300px) */
+            max-width: 260px; /* Lebar kartu diperkecil */
+            
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
         .card-icon { font-size: 50px; margin-bottom: 20px; }
-        .card h2 { font-size: 20px; font-weight: 600; margin: 0 0 15px 0; }
-        .card p { color: var(--text-light); font-size: 14px; line-height: 1.6; flex-grow: 1; margin-bottom: 30px; }
-        .btn { display: inline-block; width: 100%; padding: 12px 15px; color: white; text-decoration: none; font-weight: 600; border-radius: 10px; transition: background-color 0.3s; } /* <--- UBAH INI (dari 15px) */
+        
+        .card h2 {
+            font-size: 20px; /* Font judul kartu diperkecil */
+            font-weight: 600;
+            margin: 0 0 15px 0;
+        }
+        
+        .card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 15px; /* Tombol dibuat lebih pendek */
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
         .btn-repo { background-color: var(--primary-color); }
         .btn-repo:hover { background-color: #0056b3; }
         .btn-upload { background-color: var(--secondary-color); }
