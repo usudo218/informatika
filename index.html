@@ -26,10 +26,11 @@
             padding-bottom: 60px;
         }
         .container {
-            max-width: 900px;
+            max-width: 900px; /* Max-width container agar 3 kartu pas */
             margin: 0 auto;
             padding: 20px;
         }
+        
         /* Header & Footer (Tidak diubah) */
         .site-header {
             background-color: var(--header-bg);
@@ -64,14 +65,15 @@
             box-sizing: border-box;
         }
         
-        /* Konten Dashboard (Tidak diubah) */
+        /* Konten Dashboard (DIUBAH) */
         .dashboard-container { text-align: center; }
         header h1 { font-size: 36px; font-weight: 700; margin-bottom: 10px; }
         header p { font-size: 18px; color: var(--text-light); margin-bottom: 40px; }
+        
         .card-grid {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 30px; /* Jarak antar kartu */
             flex-wrap: wrap; /* Ini penting agar rapi di HP */
         }
         
@@ -80,10 +82,10 @@
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             
-            /* Ini yang diperkecil agar muat 3 */
-            padding: 30px; 
+            /* INI BAGIAN PENTING UNTUK 3 KOLOM */
+            padding: 25px; /* Padding kartu diperkecil */
             width: 100%;
-            max-width: 260px; /* Lebar kartu diperkecil */
+            max-width: 250px; /* Lebar kartu diperkecil agar muat 3 */
             
             display: flex;
             flex-direction: column;
@@ -94,14 +96,15 @@
             transform: translateY(-10px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.12);
         }
-        .card-icon { font-size: 50px; margin-bottom: 20px; }
-        
+        .card-icon {
+            font-size: 40px; /* Ikon diperkecil */
+            margin-bottom: 20px;
+        }
         .card h2 {
-            font-size: 20px; /* Font judul kartu diperkecil */
+            font-size: 20px; /* Judul kartu diperkecil */
             font-weight: 600;
             margin: 0 0 15px 0;
         }
-        
         .card p {
             color: var(--text-light);
             font-size: 14px;
@@ -109,11 +112,10 @@
             flex-grow: 1;
             margin-bottom: 30px;
         }
-        
         .btn {
             display: inline-block;
             width: 100%;
-            padding: 12px 15px; /* Tombol dibuat lebih pendek */
+            padding: 12px 15px; /* Tombol diperpendek */
             color: white;
             text-decoration: none;
             font-weight: 600;
@@ -125,53 +127,17 @@
         .btn-upload { background-color: var(--secondary-color); }
         .btn-upload:hover { background-color: #1e7e34; }
 
-        /* ======================================= */
-        /* === PENYESUAIAN KHUSUS UNTUK TAMPILAN HP === */
-        /* ======================================= */
+        /* Penyesuaian HP (Tidak diubah) */
         @media (max-width: 768px) {
-            /* 1. Perkecil padding utama body */
-            body {
-                padding-top: 60px; /* Kurangi tinggi header */
-            }
-            .container {
-                padding: 15px; /* Kurangi padding samping */
-            }
-
-            /* 2. Perkecil Header */
-            .site-header {
-                padding: 0 15px;
-            }
-            .header-content {
-                height: 60px; /* Buat header lebih pendek */
-            }
-            .header-title {
-                font-size: 18px; /* Perkecil judul di header */
-            }
-
-            /* 3. Perkecil ukuran font judul utama */
-            header h1 {
-                font-size: 28px;
-            }
-            header p {
-                font-size: 16px;
-                margin-bottom: 30px;
-            }
-
-            /* 4. Buat kartu lebih ringkas */
-            .card-grid {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px; /* Kurangi jarak antar kartu */
-            }
-            .card {
-                padding: 25px; /* Kurangi padding di dalam kartu */
-            }
-            .card-icon {
-                font-size: 40px; /* Perkecil ikon */
-            }
-            .card h2 {
-                font-size: 20px; /* Perkecil judul kartu */
-            }
+            body { padding-top: 60px; }
+            .container { padding: 15px; }
+            .site-header { padding: 0 15px; }
+            .header-content { height: 60px; }
+            .header-title { font-size: 18px; }
+            header h1 { font-size: 28px; }
+            header p { font-size: 16px; margin-bottom: 30px; }
+            .card-grid { flex-direction: column; align-items: center; gap: 20px; }
+            .card { padding: 25px; max-width: 300px; /* Kartu kembali normal di HP */ }
         }
     </style>
 </head>
@@ -190,24 +156,28 @@
             </header>
             <main>
                 <div class="card-grid">
+                    
                     <div class="card">
                         <div class="card-icon">📂</div>
                         <h2>Materi & Repositori</h2>
                         <p>Temukan modul, presentasi, video tutorial, dan file pendukung lainnya di sini.</p>
                         <a href="repository.html" class="btn btn-repo">Buka Repositori</a>
                     </div>
+                    
                     <div class="card">
-    <div class="card-icon">🔐</div>
-    <h2>Arsip</h2>
-    <p>Akses File Khusus.</p>
-    <a href="login_admin.html" class="btn btn-repo">Login ke Arsip</a>
-</div>
+                        <div class="card-icon">🔐</div>
+                        <h2>Arsip Guru</h2>
+                        <p>Akses folder materi lengkap, bank soal, dan arsip lainnya (khusus guru).</p>
+                        <a href="login_admin.html" class="btn btn-repo">Login ke Arsip</a>
+                    </div>
+
                     <div class="card">
                         <div class="card-icon">📤</div>
                         <h2>Pengumpulan Tugas</h2>
                         <p>Unggah file tugas Anda melalui formulir yang telah disediakan.</p>
                         <a href="upload.html" class="btn btn-upload">Unggah Tugas</a>
                     </div>
+
                 </div>
             </main>
         </div>
