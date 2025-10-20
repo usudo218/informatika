@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Arsip Guru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #007BFF; /* Biru, beda dari login siswa */
+            --light-grey: #f4f7f6;
+            --dark-grey: #555;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .back-link:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h2 { margin-top: 0; margin-bottom: 30px; color: #333; }
+        .input-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        #error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 15px;
+            min-height: 20px;
+            display: none; /* Sembunyikan pesan error awalnya */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <a href="index.html" class="back-link">⬅ Kembali ke Portal Utama</a>
+        
+        <div class="login-container">
+            <h2>Login Arsip Guru</h2>
+            
+            <form id="loginFormGuru">
+               <div class="input-group">
+                    <label for="user">Username</label>
+                    <input type="text" id="user" name="user" required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Masuk</button>
+                <p id="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Logika JavaScript untuk validasi login
+        document.getElementById('loginFormGuru').addEventListener('submit', function(event) {
+            // Mencegah form mengirim data (reload halaman)
+            event.preventDefault(); 
+
+            // 1. Link Folder Google Drive Anda
+            // GANTI INI dengan link share folder Google Drive Anda
+            const driveUrl = "1IpTLzQyEhPAdvwT6MHbykb0xBScEtg2V";
+
+            // 2. Kredensial yang benar (sesuai permintaan Anda)
+            const validUser = "agustjakra";
+            const validPass = "IvandanIvana#1212";
+
+            // 3. Ambil input dari user
+            const user = document.getElementById('user').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // 4. Validasi
+            if (user === validUser && password === validPass) {
+                // Jika berhasil, arahkan ke Google Drive
+                errorMessage.style.display = 'none';
+                window.location.href = driveUrl;
+            } else {
+                // Jika gagal, tampilkan pesan error
+                errorMessage.textContent = 'Username atau Password salah!';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </GANTI_DENGAN_LINK_FOLDER_ANDA>
+</html>
