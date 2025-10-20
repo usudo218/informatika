@@ -2,7 +2,7 @@
 
 Ini adalah repositori kode sumber untuk **Portal Siswa Kelas Informatika SMAN 1 Muncar**. Portal ini di-hosting menggunakan GitHub Pages dan berfungsi sebagai pusat informasi, materi, dan administrasi tugas untuk siswa.
 
-**➡️ Link Portal Live: `https://usudo218.github.io/informatika/`**
+**➡️ Link Portal Live: `https://usudo.site`**
 ---
 
 ## Fitur Utama
