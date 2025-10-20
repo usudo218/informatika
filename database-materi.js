@@ -8,9 +8,9 @@
             },
             {
                 ikon: "📄",
-                judul: "Modul 1: Pengenalan Jaringan",
-                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
-                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                judul: "Modul 1: Berpikir Komputasi",
+                deskripsi: "Berpikir komputasional adalah metode penyelesaian masalah dengan menerapkan teknik ilmu komputer atau informatika, yang melibatkan proses berpikir sistematis dan terstruktur. Metode ini menggunakan empat konsep utama: dekomposisi (memecah masalah besar), pengenalan pola (mencari pola dalam data), abstraksi (fokus pada detail penting), dan algoritma (membuat langkah-langkah solusi). Tujuannya adalah untuk merumuskan masalah dan solusinya agar bisa diolah secara efektif oleh komputer atau manusia. .",
+                id: "11kUSDDRtOvZ2rEuBRHdaTwjazvHSRfVc",
                 tipe: "pdf" 
             },
             {
