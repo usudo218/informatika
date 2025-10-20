@@ -82,16 +82,17 @@
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             
-            /* INI BAGIAN PENTING UNTUK 3 KOLOM */
-            padding: 25px; /* Padding kartu diperkecil */
+            padding: 25px; 
             width: 100%;
-            max-width: 250px; /* Lebar kartu diperkecil agar muat 3 */
-            box-sizing: border-box;
+            max-width: 250px; 
+
+            box-sizing: border-box; /* <--- TAMBAHKAN BARIS INI */
+            
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s, box-shadow 0.3s;
-        }
+        }        }
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.12);
