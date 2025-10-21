@@ -57,6 +57,17 @@
             .header-title { display: none; }
             .header-content { justify-content: flex-end; }
         }
+        /* CSS UNTUK TOMBOL ADMIN */
+        .btn-admin-privat {
+            background-color: #dc3545; /* Warna merah */
+            color: white;
+            border-color: #dc3545;
+        }
+        .btn-admin-privat:hover {
+            background-color: #a71d2a; /* Warna merah lebih gelap */
+            color: white;
+            border-color: #a71d2a;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +85,21 @@
         
     
         <main id="file-grid-container" class="file-grid"></main>
+        <div class="file-card">
+            <div class="file-header">
+                <div class="file-icon">🔐</div>
+                <div class="file-title">Arsip Admin (Privat)</div>
+            </div>
+            <p class="file-description">
+                Akses khusus admin ke folder Google Drive privat. 
+                Memerlukan login akun Google Anda yang sudah terdaftar.
+            </p>
+            <div class="button-group single">
+                <a href="https://drive.google.com/drive/folders/1QdRAc10Wxrc9-85sKl3maItu0r9aNo-s?usp=drive_link" target="_blank" class="btn btn-admin-privat">
+                    Buka Arsip Privat
+                </a>
+            </div>
+        </div>
     </div>
 
     <footer class="site-footer">
