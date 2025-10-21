@@ -41,4 +41,181 @@
         .file-card:hover { transform: translateY(-7px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .file-header { display: flex; align-items: center; margin-bottom: 15px; }
         .file-icon { font-size: 22px; margin-right: 15px; }
-        .file-title { font-size: 16px; font-weight
+        .file-title { font-size: 16px; font-weight: 600; color: #2c3e50; }
+        .file-description { margin: 0 0 20px 0; color: #6c757d; font-size: 14px; line-height: 1.6; flex-grow: 1; }
+        .button-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .button-group.single { grid-template-columns: 1fr; }
+        .btn { display: inline-block; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 14px; text-align: center; border: 2px solid transparent; transition: all 0.2s; }
+        .btn-download { background-color: #007bff; color: white; }
+        .btn-view { background-color: #f1f3f5; color: #343a40; }
+        .btn-task { background-color: #28a745; color: white; }
+        .btn-task:hover { background-color: #1e7e34; }
+
+        @media (max-width: 992px) { .file-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .file-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 24px; }
+            .header-title { display: none; }
+            .header-content { justify-content: flex-end; }
+        }
+        
+        .btn-admin-privat {
+            background-color: #dc3545; /* Warna merah */
+            color: white;
+            border-color: #dc3545;
+        }
+        .btn-admin-privat:hover {
+            background-color: #a71d2a; /* Warna merah lebih gelap */
+            color: white;
+            border-color: #a71d2a;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="header-title">Informatika | Materi</div>
+            <a href="index.html" class="back-link">⬅ Kembali ke Portal Utama</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Materi & Repositori</h1>
+        </div>
+        
+        <main id="file-grid-container" class="file-grid">
+            
+            <div class="file-card">
+                <div class="file-header">
+                    <div class="file-icon">🔐</div>
+                    <div class="file-title">Arsip Admin (Privat)</div>
+                </div>
+                <p class="file-description">
+                    Akses khusus admin ke folder Google Drive privat. 
+                    Memerlukan login akun Google Anda yang sudah terdaftar.
+                </p>
+                <div class="button-group single">
+                    <a href="https://drive.google.com/drive/folders/1QdRAc10Wxrc9-85sKl3maItu0r9aNo-s?usp=drive_link" target="_blank" class="btn btn-admin-privat">
+                        Buka Arsip Privat
+                    </a>
+                </div>
+            </div>
+            </main>
+    </div>
+
+    <footer class="site-footer">
+       © 2025 Informatika SMAN 1 Muncar | Guru Informatika
+    </footer>
+
+    
+    <script>
+        // === DATABASE MATERI SUDAH ADA DI SINI ===
+        const daftarFile = [
+            {
+                ikon: "✍️",
+                judul: "Tugas dan Ulangan Harian",
+                deskripsi: "Kerjakan soal latihan VLSM yang disesuaikan dengan nomor absen Anda di halaman ini.",
+                halaman: "dashboard.php" // Diperbarui untuk mengarah ke login
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 1: Pengenalan Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 2: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 3: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 4: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 5: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📄",
+                judul: "Modul 6: Modul Jaringan",
+                deskripsi: "Materi dasar yang mencakup topologi, perangkat keras, dan model OSI.",
+                id: "GANTI_DENGAN_ID_FILE_PDF_ANDA",
+                tipe: "pdf" 
+            },
+            {
+                ikon: "📹",
+                judul: "Video Tutorial VLAN",
+                deskripsi: "Video panduan konfigurasi VLAN dasar di Cisco Packet Tracer.",
+                id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
+                tipe: "video"
+            },
+            {
+                ikon: "📹",
+                judul: "Video Tutorial Subnettting",
+                deskripsi: "Video panduan Subnetting.",
+                id: "GANTI_DENGAN_ID_FILE_VIDEO_ANDA",
+                tipe: "video"
+            }
+        ];
+        // =======================================
+
+
+        // --- KODE UNTUK MENAMPILKAN KARTU ---
+        const fileContainer = document.getElementById('file-grid-container');
+
+        if (typeof daftarFile !== 'undefined') {
+            daftarFile.forEach(file => {
+                const card = document.createElement('div');
+                card.className = 'file-card';
+
+                let buttonsHTML = '';
+                let buttonGroupClass = 'button-group';
+
+                if (file.halaman) {
+                    buttonGroupClass += ' single';
+                    buttonsHTML = `<a href="dashboard.php" class="btn btn-task">Mulai Kerjakan</a>`;
+                } else {
+                    const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
+                    const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
+
+                    if (file.tipe !== 'zip') {
+                        buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
+                    } else {
+                        buttonGroupClass += ' single';
+                    }
+                    buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
+                }
+
+                card.innerHTML = `
+                    <div class="file-header">
+                        <div class="file-icon">${file.ikon}</div>
+                        <div class="file-title">${file.judul}</div>
+                    </div>
+                    <p class="file-description">${file.deskripsi}</p>
+                    <div class="${buttonGroupClass}">${buttonsHTML}</div>
+                `;
+                fileContainer.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
