@@ -49,7 +49,7 @@
         .btn-download { background-color: #007bff; color: white; }
         .btn-view { background-color: #f1f3f5; color: #343a40; }
         .btn-task { background-color: #28a745; color: white; }
-        .btn-task:hover { background-color: #343a40; }
+        .btn-task:hover { background-color: #1e7e34; } /* <- PERBAIKAN HOVER HIJAU */
 
         @media (max-width: 992px) { .file-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
@@ -67,7 +67,19 @@
         .btn-admin-privat:hover {
             background-color: #a71d2a; /* Warna merah lebih gelap */
             color: white;
-            border-color: #dc3545;
+            border-color: #a71d2a; /* <- PERBAIKAN HOVER MERAH */
+        }
+        
+        /* === CSS BIRU NAVY DITAMBAHKAN DI SINI === */
+        .btn-navy {
+            background-color: #004080; /* Warna Biru Navy */
+            color: white;
+            border-color: #004080;
+        }
+        .btn-navy:hover {
+            background-color: #00274d; /* Warna Biru Navy lebih gelap */
+            color: white;
+            border-color: #00274d;
         }
         
     </style>
@@ -111,7 +123,7 @@
                    AKSES UNTUK PRESENSI DAN INPUT NILAI
                 </p>
                 <div class="button-group single">
-                    <a href="https://lynk.id/guruinformatika" target="_blank" class="btn btn-admin-privat">
+                    <a href="https://lynk.id/guruinformatika" target="_blank" class="btn btn-navy">
                         Buka
                     </a>
                 </div>
@@ -131,7 +143,7 @@
                 ikon: "✍️",
                 judul: "Tugas dan Ulangan Harian",
                 deskripsi: "Kerjakan soal latihan VLSM yang disesuaikan dengan nomor absen Anda di halaman ini.",
-                halaman: "dashboard.html" // Diperbarui untuk mengarah ke login
+                halaman: "dashboard.php" // Diperbarui untuk mengarah ke login
             },
             {
                 ikon: "📄",
@@ -206,7 +218,8 @@
 
                 if (file.halaman) {
                     buttonGroupClass += ' single';
-                    buttonsHTML = `<a href="dashboard.html" class="btn btn-task">Mulai Kerjakan</a>`;
+                    // === LINK TUGAS DIPERBAIKI DI SINI ===
+                    buttonsHTML = `<a href="dashboard.php" class="btn btn-task">Mulai Kerjakan</a>`;
                 } else {
                     const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
                     const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
