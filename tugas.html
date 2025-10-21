@@ -21,6 +21,31 @@
         .back-button { background-color: #6c757d; }
         .download-button { background-color: #dc3545; }
         .logout-button { background-color: #ffc107; color: #333; font-weight: bold; }
+
+        /* --- CSS FOOTER DITAMBAHKAN DI SINI --- */
+        .site-footer {
+            background-color: #343a40;
+            color: #adb5bd;
+            text-align: center;
+            padding: 20px 30px;
+            font-size: 14px;
+            margin-top: 40px; /* Memberi jarak dari konten di atasnya */
+            line-height: 1.6;
+        }
+        .attribution-line {
+            font-size: 12px;
+            color: #adb5bd;
+        }
+        .attribution-line a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .attribution-line a:hover {
+            text-decoration: underline;
+        }
+        .heart-icon {
+            color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +73,13 @@
         <a href="dashboard.html" class="action-button back-button">← Kembali ke Halaman Login</a>
     </div>
     
+    <footer class="site-footer">
+        <div>© 2025 usudo.site | Guru Informatika</div>
+        <div class="attribution-line">
+            Didesain dengan <span class="heart-icon">❤️</span> | Didukung oleh GitHub Pages
+        </div>
+    </footer>
+
     <script src="database-soal.js"></script>
 
     <script>
@@ -57,10 +89,10 @@
         // Fungsi Logout
         function logout() { 
             sessionStorage.clear(); 
-            window.location.href = 'index.html'; 
+            window.location.href = 'index.html'; // Kembali ke portal utama
         }
 
-        // Fungsi Generate PDF 
+        // Fungsi Generate PDF (Sudah ditambahkan footer)
         function generatePdf() {
             const downloadBtn = document.getElementById('downloadBtn');
             downloadBtn.disabled = true;
@@ -69,6 +101,8 @@
             try {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
+                
+                // Ambil data dari sessionStorage (bawaan file .html Anda)
                 const name = sessionStorage.getItem('loggedInStudentName') || 'Siswa';
                 const studentClass = sessionStorage.getItem('loggedInStudentClass') || '-';
                 const absen = sessionStorage.getItem('loggedInStudentAbsen') || '-';
@@ -99,6 +133,18 @@
                 const soal2TextWrapped = doc.splitTextToSize(soal2TextClean, 180);
                 doc.text(soal2TextWrapped, 15, nextY + 8);
                 
+                
+                // --- KODE FOOTER PDF DITAMBAHKAN DI SINI ---
+                const pageHeight = doc.internal.pageSize.getHeight();
+                const pageWidth = doc.internal.pageSize.getWidth();
+                
+                doc.setFontSize(9); // Ukuran font kecil
+                doc.setTextColor(128); // Warna abu-abu
+                
+                doc.text('© 2025 usudo.site | Guru Informatika', pageWidth / 2, pageHeight - 15, { align: 'center' });
+                doc.text('Design By <span class="heart-icon">❤️</span> <a href="https://usudo.id" target="_blank">Agus Tjakra | Support By <a href="https://github.com/features/pages" target="_blank">GitHub Pages</a>', pageWidth / 2, pageHeight - 10, { align: 'center' });
+                // --- BATAS KODE FOOTER ---  
+                
                 const fileName = `Tugas_VLSM_${name.replace(/ /g, '_')}.pdf`;
                 doc.save(fileName);
 
@@ -115,36 +161,7 @@
         document.getElementById('logoutBtn').addEventListener('click', logout);
         document.getElementById('downloadBtn').addEventListener('click', generatePdf);
 
-        // Logika saat halaman dimuat
+        // Logika saat halaman dimuat (Menggunakan sessionStorage)
         window.addEventListener('DOMContentLoaded', () => {
             const name = sessionStorage.getItem('loggedInStudentName');
-            const studentClass = sessionStorage.getItem('loggedInStudentClass');
-            const absen = sessionStorage.getItem('loggedInStudentAbsen');
-
-            if (!name || !absen) {
-                alert('Sesi tidak ditemukan! Anda akan dikembalikan ke halaman login.');
-                window.location.href = 'dashboard.html';
-                return;
-            }
-
-            document.getElementById('studentName').textContent = name;
-            document.getElementById('studentClass').textContent = studentClass;
-            document.getElementById('studentAbsen').textContent = absen;
-            
-            const soalContainer = document.getElementById('soal-container');
-            const noAbsen = parseInt(absen);
-            
-            // Cek apakah dataSoal sudah dimuat
-            if (typeof dataSoal !== 'undefined' && dataSoal[noAbsen]) {
-                currentSoal = dataSoal[noAbsen];
-                soalContainer.innerHTML = `
-                    <div class="question"><p class="question-title">Soal 1:</p><p>${currentSoal.soal1}</p></div>
-                    <div class="question"><p class="question-title">Soal 2:</p><p>${currentSoal.soal2}</p></div>
-                `;
-            } else {
-                soalContainer.innerHTML = '<p>Maaf, soal untuk nomor absen Anda tidak tersedia.</p>';
-            }
-        });
-    </script>
-</body>
-</html>
+            const studentClass
