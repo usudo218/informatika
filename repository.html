@@ -59,7 +59,7 @@
             .header-content { justify-content: flex-end; }
         }
         
-        /* === CSS TOMBOL ADMIN SUDAH DIPINDAH KE SINI === */
+        /* CSS UNTUK TOMBOL ADMIN */
         .btn-admin-privat {
             background-color: #dc3545; /* Warna merah */
             color: white;
@@ -85,8 +85,10 @@
         <div class="page-header">
             <h1>Materi & Repositori</h1>
         </div>
-
-        <div style="margin-bottom: 25px;"> <div class="file-card">
+        
+        <main id="file-grid-container" class="file-grid">
+            
+            <div class="file-card">
                 <div class="file-header">
                     <div class="file-icon">🔐</div>
                     <div class="file-title">Arsip Admin (Privat)</div>
@@ -101,8 +103,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <main id="file-grid-container" class="file-grid">
             </main>
     </div>
 
@@ -127,34 +127,7 @@
                 if (file.halaman) {
                     // KASUS 1: Jika ini adalah halaman internal (seperti ulangan)
                     buttonGroupClass += ' single';
-                    // --- PERBAIKAN ---
-                    // Mengarahkan ke dashboard.php (halaman login)
-                    // bukan dashboard.html (yang ada di database-materi.js)
+                    // Link diarahkan ke dashboard.php (halaman login)
                     buttonsHTML = `<a href="dashboard.php" class="btn btn-task">Mulai Kerjakan</a>`;
                 } else {
                     // KASUS 2: Jika ini adalah file Google Drive
-                    const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
-                    const linkUnduh = `https://drive.google.com/uc?export=download&id=${file.id}`;
-
-                    if (file.tipe !== 'zip') {
-                        buttonsHTML += `<a href="${linkLihat}" target="_blank" class="btn btn-view">Lihat</a>`;
-                    } else {
-                        buttonGroupClass += ' single';
-                    }
-                    buttonsHTML += `<a href="${linkUnduh}" class="btn btn-download">Unduh</a>`;
-                }
-
-                card.innerHTML = `
-                    <div class="file-header">
-                        <div class="file-icon">${file.ikon}</div>
-                        <div class="file-title">${file.judul}</div>
-                    </div>
-                    <p class="file-description">${file.deskripsi}</p>
-                    <div class="${buttonGroupClass}">${buttonsHTML}</div>
-                `;
-                fileContainer.appendChild(card);
-            });
-        }
-    </script>
-</body>
-</html>
