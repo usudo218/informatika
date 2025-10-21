@@ -6,6 +6,16 @@
                 // === PERUBAHAN DI SINI ===
                 halaman: "dashboard.html" 
             },
+  {
+    ikon: "🔒", // Atau ikon awan ☁️
+    judul: "AKSES TERBATAS",
+    deskripsi: "Akses file  Google Drive. Memerlukan login dengan akun Google Anda.",
+    // Tautan langsung ke Google Drive
+    link_eksternal: "https://drive.google.com", 
+    tombol_teks: "Buka Google Drive", // Teks untuk tombol
+    tombol_warna: "merah" // Penanda warna
+}, 
+// ... object file/materi Anda yang lain ...
             {
                 ikon: "📄",
                 judul: "Modul 1: Berpikir Komputasi",
