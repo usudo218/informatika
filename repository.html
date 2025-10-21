@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-       
+        
         :root { 
             --primary-color: #007BFF; 
             --background-color: #f4f7f6; 
@@ -59,6 +59,18 @@
             .header-content { justify-content: flex-end; }
         }
         
+        /* === CSS TOMBOL ADMIN SUDAH DIPINDAH KE SINI === */
+        .btn-admin-privat {
+            background-color: #dc3545; /* Warna merah */
+            color: white;
+            border-color: #dc3545;
+        }
+        .btn-admin-privat:hover {
+            background-color: #a71d2a; /* Warna merah lebih gelap */
+            color: white;
+            border-color: #a71d2a;
+        }
+        
     </style>
 </head>
 <body>
@@ -73,34 +85,25 @@
         <div class="page-header">
             <h1>Materi & Repositori</h1>
         </div>
-        /* CSS UNTUK TOMBOL ADMIN */
-        .btn-admin-privat {
-            background-color: #dc3545; /* Warna merah */
-            color: white;
-            border-color: #dc3545;
-        }
-        .btn-admin-privat:hover {
-            background-color: #a71d2a; /* Warna merah lebih gelap */
-            color: white;
-            border-color: #a71d2a;
-        }
-    
-        <main id="file-grid-container" class="file-grid"></main>
-        <div class="file-card">
-            <div class="file-header">
-                <div class="file-icon">🔐</div>
-                <div class="file-title">Arsip Admin (Privat)</div>
-            </div>
-            <p class="file-description">
-                Akses khusus admin ke folder Google Drive privat. 
-                Memerlukan login akun Google Anda yang sudah terdaftar.
-            </p>
-            <div class="button-group single">
-                <a href="https://drive.google.com/drive/folders/1QdRAc10Wxrc9-85sKl3maItu0r9aNo-s?usp=drive_link" target="_blank" class="btn btn-admin-privat">
-                    Buka Arsip Privat
-                </a>
+
+        <div style="margin-bottom: 25px;"> <div class="file-card">
+                <div class="file-header">
+                    <div class="file-icon">🔐</div>
+                    <div class="file-title">Arsip Admin (Privat)</div>
+                </div>
+                <p class="file-description">
+                    Akses khusus admin ke folder Google Drive privat. 
+                    Memerlukan login akun Google Anda yang sudah terdaftar.
+                </p>
+                <div class="button-group single">
+                    <a href="https://drive.google.com/drive/folders/1QdRAc10Wxrc9-85sKl3maItu0r9aNo-s?usp=drive_link" target="_blank" class="btn btn-admin-privat">
+                        Buka Arsip Privat
+                    </a>
+                </div>
             </div>
         </div>
+        <main id="file-grid-container" class="file-grid">
+            </main>
     </div>
 
     <footer class="site-footer">
@@ -124,7 +127,10 @@
                 if (file.halaman) {
                     // KASUS 1: Jika ini adalah halaman internal (seperti ulangan)
                     buttonGroupClass += ' single';
-                    buttonsHTML = `<a href="${file.halaman}" class="btn btn-task">Mulai Kerjakan</a>`;
+                    // --- PERBAIKAN ---
+                    // Mengarahkan ke dashboard.php (halaman login)
+                    // bukan dashboard.html (yang ada di database-materi.js)
+                    buttonsHTML = `<a href="dashboard.php" class="btn btn-task">Mulai Kerjakan</a>`;
                 } else {
                     // KASUS 2: Jika ini adalah file Google Drive
                     const linkLihat = `https://drive.google.com/file/d/${file.id}/view?usp=sharing`;
